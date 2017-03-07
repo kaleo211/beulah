@@ -7,8 +7,8 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-  controllers.transaction.getAllTransactions().then(function (resp) {
-    res.status(200).render('index', resp);
+  controllers.transaction.getAllTransactions().then(function (transactions) {
+    res.status(200).render('index', {transactions: transactions});
   });
 });
 

@@ -1,0 +1,28 @@
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">FROM</th>
+      <th class="mdl-data-table__cell--non-numeric">TO</th>
+      <th class="mdl-data-table__cell--non-numeric">TYPE</th>
+      <th class="mdl-data-table__cell--non-numeric">CATEGORY</th>
+      <th class="mdl-data-table__cell--non-numeric">MEMO</th>
+      <th class="mdl-data-table__cell--non-numeric">DATE</th>
+      <th class="mdl-data-table__cell--non-numeric">TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% transactions.forEach(function (transaction) { %>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric"><%= transaction.from %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= transaction.to %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= transaction.type %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= transaction.category %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= transaction.memo %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= transaction.date.toISOString().slice(0,10) %></td>
+        <td><%= transaction.total%></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+

@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     from: DataTypes.STRING,
     to: DataTypes.STRING,
     total: DataTypes.FLOAT,
-    date: DataTypes.DATE,
+    date: DataTypes.DATEONLY,
     type: DataTypes.STRING,
     category: DataTypes.STRING,
     memo: DataTypes.STRING

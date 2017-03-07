@@ -21,82 +21,21 @@
           <a href="#add" class="mdl-layout__tab">Add</a>
         </div>
       </header>
+
       <main class="mdl-layout__content">
-        <section class="mdl-layout__tab-panel" id="all">
+        <section class="mdl-layout__tab-panel is-active" id="all">
           <div class="page-content">
-            <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--6-col" style="position:fixed">
-              </div>
-              <div class="mdl-cell mdl-cell--6-col"></div>
-              <div class="mdl-cell mdl-cell--6-col">
-              </div>
-            </div>
+            <% include table/table.ejs %>
           </div>
         </section>
+
         <section class="mdl-layout__tab-panel" id="transfers">
-          <div class="page-content">Coming soon!</div>
+          <div class="page-content">addTransactions</div>
         </section>
+
         <section class="mdl-layout__tab-panel" id="add">
           <div class="page-content">
-            <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--3-col"></div>
-              <div class="mdl-cell mdl-cell--6-col  mdl-shadow--2dp">
-                <form id="addTransaction" action="addTransaction" method="post">
-                  <div class="mdl-grid mdl-grid--nesting">
-                    <div class="mdl-cell mdl-cell--6-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="from" name="from">
-                        <label class="mdl-textfield__label" for="from">from</label>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="to" name="to">
-                        <label class="mdl-textfield__label" for="to">to</label>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="type" name="type">
-                        <label class="mdl-textfield__label" for="type">type</label>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="category" name="category">
-                        <label class="mdl-textfield__label" for="category">category</label>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--12-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="total" name="total">
-                        <label class="mdl-textfield__label" for="total">total</label>
-                        <span class="mdl-textfield__error">Input is not a number!</span>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="date" name="date">
-                        <label class="mdl-textfield__label" for="date">date</label>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="memo" name="memo">
-                        <label class="mdl-textfield__label" for="memo">memo</label>
-                      </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--10-col"></div>
-                    <div class="mdl-cell mdl-cell--2-col">
-                      <button class="mdl-button mdl-button--raised mdl-js-button mdl-button--colored mdl-button--floating mdl-js-ripple-effect">
-                        Submit
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="mdl-cell mdl-cell--3-col"></div>
-            </div>
+            <% include form/add-transaction.ejs %>
           </div>
         </section>
       </main>

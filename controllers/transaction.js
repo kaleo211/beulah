@@ -2,8 +2,10 @@ var Sequelize = require('sequelize');
 var models = require('../models');
 
 var getAllTransactions = function () {
-  return models.transaction.findAll().then(([projects]) => {
-    return projects;
+  return models.transaction.findAll().then((transactions) => {
+    return transactions.map(function(transaction) {
+      return transaction.get({plain: true})
+    });
   });
 };
 
