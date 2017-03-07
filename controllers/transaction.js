@@ -7,8 +7,18 @@ var getAllTransactions = function () {
   });
 };
 
-var addTransaction = function (from, to, total, date, memo) {
-  models.transaction.create({from:from,to:to,total:total,date:date,memo:memo});
+var addTransaction = function (from, to, total, date, memo, type, category) {
+  models.transaction.create({
+    from: from,
+    to: to,
+    total: total,
+    date: date,
+    memo: memo,
+    type: type,
+    category: category
+  }).then(function (transaction) {
+    return transaction;
+  });
 }
 
 var transaction = {

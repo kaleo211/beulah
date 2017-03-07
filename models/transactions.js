@@ -10,6 +10,8 @@ module.exports = function (sequelize, DataTypes) {
     to: DataTypes.STRING,
     total: DataTypes.FLOAT,
     date: DataTypes.DATE,
+    type: DataTypes.STRING,
+    category: DataTypes.STRING,
     memo: DataTypes.STRING
   });
 };

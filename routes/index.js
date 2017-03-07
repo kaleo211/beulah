@@ -6,9 +6,24 @@ router.use(function (req, res, next) {
   next();
 });
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   controllers.transaction.getAllTransactions().then(function (resp) {
     res.status(200).render('index', resp);
+  });
+});
+
+router.post('/addTransaction', function (req, res) {
+  var body = req.body;
+  resp = controllers.transaction.addTransaction(
+    body.from,
+    body.to,
+    body.total,
+    body.date,
+    body.memo,
+    body.type,
+    body.category
+  ).then(function (resp) {
+    res.status(200);
   });
 });
 

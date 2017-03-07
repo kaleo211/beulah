@@ -1,39 +1,106 @@
+<!doctype html>
 <html>
 <head>
   <link rel="stylesheet" href="/css/material.min.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="/css/application.css">
+  <script src="/js/material.min.js"></script>
 </head>
-<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-  <div class="mdl-layout__container has-scrolling-header">
-    <div class="mmdl-layout mdl-js-layout mdl-layout--fixed-header has-tabs is-upgraded is-small-screen" data-upgraded=",MaterialLayout">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+
+<body class="mdl-demo mdl-base">
+  <div class="mdl-layout-container">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+       <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Beulah</h3>
+          <h2>Beulah</h2>
         </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
-        <div class="mdl-layout__tab-bar-container">
-          <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark mdl-js-ripple-effect--ignore-events" data-upgraded=",MaterialRipple">
-            <a href="#overview" class="mdl-layout__tab">Overview<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
-            <a href="#features" class="mdl-layout__tab">Features</a>
-            <a href="#features" class="mdl-layout__tab">Details</a>
-            <a href="#features" class="mdl-layout__tab">Technology</a>
-            <a href="#features" class="mdl-layout__tab">FAQ</a>
-          </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="#all" class="mdl-layout__tab is-active">All</a>
+          <a href="#transfers" class="mdl-layout__tab">Transfers</a>
+          <div class="mdl-layout-spacer"></div>
+          <a href="#add" class="mdl-layout__tab">Add</a>
         </div>
       </header>
       <main class="mdl-layout__content">
-        <div class="mdl-layout__tab-panel is-active" id="overview">
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-
-          </section>
-        </div>
+        <section class="mdl-layout__tab-panel" id="all">
+          <div class="page-content">
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--6-col" style="position:fixed">
+              </div>
+              <div class="mdl-cell mdl-cell--6-col"></div>
+              <div class="mdl-cell mdl-cell--6-col">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="transfers">
+          <div class="page-content">Coming soon!</div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="add">
+          <div class="page-content">
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--3-col"></div>
+              <div class="mdl-cell mdl-cell--6-col  mdl-shadow--2dp">
+                <form id="addTransaction" action="addTransaction" method="post">
+                  <div class="mdl-grid mdl-grid--nesting">
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="from" name="from">
+                        <label class="mdl-textfield__label" for="from">from</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="to" name="to">
+                        <label class="mdl-textfield__label" for="to">to</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="type" name="type">
+                        <label class="mdl-textfield__label" for="type">type</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="category" name="category">
+                        <label class="mdl-textfield__label" for="category">category</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="total" name="total">
+                        <label class="mdl-textfield__label" for="total">total</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="date" name="date">
+                        <label class="mdl-textfield__label" for="date">date</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="memo" name="memo">
+                        <label class="mdl-textfield__label" for="memo">memo</label>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--10-col"></div>
+                    <div class="mdl-cell mdl-cell--2-col">
+                      <button class="mdl-button mdl-button--raised mdl-js-button mdl-button--colored mdl-button--floating mdl-js-ripple-effect">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col"></div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   </div>
 </body>
 </html>
-
-<style>
-  <% include index.css %>
-</style>
