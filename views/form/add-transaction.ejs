@@ -3,16 +3,20 @@
   <div class="mdl-cell mdl-cell--6-col  mdl-shadow--2dp">
     <form id="addTransaction" action="addTransaction" method="post">
       <div class="mdl-grid mdl-grid--nesting">
-        <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-cell mdl-cell--2-col">
           <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="expense">
-            <input type="radio" id="expense" class="mdl-radio__button" name="type" value="expense" checked>
-            <span class="mdl-radio__label">Expense</span>
+            <input type="radio" id="expense" class="mdl-radio__button" name="type" value="expense" checked onclick="disableTo();">
+            <span class="mdl-radio__label">
+              <i class="material-icons mdl-list__item-icon">domain</i>
+            </span>
           </label>
         </div>
         <div class="mdl-cell mdl-cell--3-col">
           <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="transfer">
-            <input type="radio" id="transfer" class="mdl-radio__button" name="type" value="transfer">
-            <span class="mdl-radio__label">Transfer</span>
+            <input type="radio" id="transfer" class="mdl-radio__button" name="type" value="transfer" onclick="enableTo();">
+            <span class="mdl-radio__label">
+              <i class="material-icons mdl-list__item-icon">attach_money</i>
+            </span>
           </label>
         </div>
         <div class="mdl-cell mdl-cell--6-col"></div>
@@ -25,23 +29,24 @@
         </div>
         <div class="mdl-cell mdl-cell--6-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="to" name="to">
+            <input class="mdl-textfield__input" type="text" id="to" name="to" disabled>
             <label class="mdl-textfield__label" for="to">To</label>
           </div>
         </div>
 
         <div class="mdl-cell mdl-cell--6-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="category" name="category">
-            <label class="mdl-textfield__label" for="category">Category</label>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="date" name="date">
             <label class="mdl-textfield__label" for="date">Date</label>
           </div>
         </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="category" name="category">
+            <label class="mdl-textfield__label" for="category">Category</label>
+          </div>
+        </div>
+
 
         <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
