@@ -10,9 +10,43 @@ var enableTransfer = function () {
   $("#to").removeAttr("disabled");
 };
 
+var snackbarContainer = document.querySelector('#messageBar');
+
+var isEmpty = function (field) {
+  if (!$("#" + field).val()) {
+    snackbarContainer.MaterialSnackbar.showSnackbar(
+      { message: field.toUpperCase() + " should not be empty!" }
+    );
+    return true;
+  }
+  return false;
+}
+
+var checkEmtpy = function () {
+  if (isEmpty("from")) return;
+  if (isEmpty("date")) return;
+  if ($(expense).is("[checked]")) {
+    if (isEmpty("category")) return;
+  } else {
+    if (isEmpty("to")) return;
+  }
+  if (isEmpty("total")) return;
+}
+
+var cleanForm = function () {
+  var fields = ["date", "total", "memo"];
+  fields.forEach(function (field) {
+    $('#' + field).val('');
+    $('#' + field).parent().removeClass('is-dirty')
+  });
+  $("#emptyTo").click();
+  $("#emptyCategory").click();
+}
+
 $(document).ready(function () {
-  var snackbarContainer = document.querySelector('#messageBar');
   $(document).on('submit', '#addTransaction', function (event) {
+    checkEmtpy();
+    event.preventDefault();
 
     $.ajax({
       url: 'addTransaction',
@@ -25,11 +59,6 @@ $(document).ready(function () {
       }
     });
 
-    event.preventDefault();
-    $("#to").val("");
-    $("#date").val("");
-    $("#category").val("");
-    $("#total").val("");
-    $("#memo").val("");
+    cleanForm();
   });
 });
