@@ -6,6 +6,10 @@
   src: local('Material Icons'), local('MaterialIcons-Regular'), url(material.woff2) format('woff2');
 }
 
+header {
+  overflow-y:scroll;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

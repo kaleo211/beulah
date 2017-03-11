@@ -11,48 +11,46 @@
 </head>
 
 <body class="mdl-demo mdl-base">
-  <div class="mdl-layout-container">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-       <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h2>Beulah</h2>
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#all" class="mdl-layout__tab is-active">All</a>
-          <a href="#transfers" class="mdl-layout__tab">Transfers</a>
-          <div class="mdl-layout-spacer"></div>
-          <a href="#add" class="mdl-layout__tab">Add</a>
-        </div>
-      </header>
+  <div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-color--primary">
+      <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
+      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        <h2>Beulah</h2>
+      </div>
+      <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+        <a href="#all" class="mdl-layout__tab is-active">All</a>
+        <a href="#transfers" class="mdl-layout__tab">Transfers</a>
+        <div class="mdl-layout-spacer"></div>
+        <a href="#add" class="mdl-layout__tab">Add</a>
+      </div>
+    </header>
 
-      <main class="mdl-layout__content">
-        <section class="mdl-layout__tab-panel is-active" id="all">
-          <div class="page-content">
-            <div>
-              <ul class="demo-list-icon mdl-list">
-                <li class="mdl-list__item">
-                  <span class="mdl-list__item-primary-content">
-                    <i class="material-icons mdl-list__item-icon">person</i>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <% include table/table.ejs %>
+    <main class="mdl-layout__content">
+      <section class="mdl-layout__tab-panel is-active" id="all">
+        <div class="page-content">
+          <div>
+            <ul class="demo-list-icon mdl-list">
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">person</i>
+                </span>
+              </li>
+            </ul>
           </div>
-        </section>
+          <% include table/table.ejs %>
+        </div>
+      </section>
 
-        <section class="mdl-layout__tab-panel" id="transfers">
-          <div class="page-content">addTransactions</div>
-        </section>
+      <section class="mdl-layout__tab-panel" id="transfers">
+        <div class="page-content">addTransactions</div>
+      </section>
 
-        <section class="mdl-layout__tab-panel" id="add">
-          <div class="page-content">
-            <% include form/add-transaction.ejs %>
-          </div>
-        </section>
-      </main>
-    </div>
+      <section class="mdl-layout__tab-panel" id="add">
+        <div class="page-content">
+          <% include form/add-transaction.ejs %>
+        </div>
+      </section>
+    </main>
   </div>
 </body>
 </html>
