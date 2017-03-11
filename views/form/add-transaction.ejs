@@ -1,15 +1,15 @@
 <script>
+var disableTo = function() {
+  $("#to").attr("disabled", "");
+  $("#category").removeAttr("disabled");
+};
+
+var enableTo = function() {
+  $("#category").attr("disabled", "");
+  $("#to").removeAttr("disabled");
+};
+
 $(document).ready(function () {
-  var disableTo = function() {
-    document.getElementById("to").setAttribute("disabled", "");
-    document.getElementById("category").removeAttribute("disabled");
-  };
-
-  var enableTo = function() {
-    document.getElementById("category").setAttribute("disabled", "");
-    document.getElementById("to").removeAttribute("disabled");
-  };
-
   var snackbarContainer = document.querySelector('#messageBar');
   $(document).on('submit', '#addTransaction', function(event) { 
     event.preventDefault();
@@ -24,12 +24,10 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div id="messageBar" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
   <button class="mdl-snackbar__action" type="button"></button>
 </div>
-
 
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--3-col"></div>
@@ -55,15 +53,23 @@ $(document).ready(function () {
         <div class="mdl-cell mdl-cell--6-col"></div>
 
         <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="from" name="from">
-            <label class="mdl-textfield__label" for="from">From</label>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+            <input class="mdl-textfield__input" id="from" name="from" type="text" readonly tabIndex="-1"/>
+              <label class="mdl-textfield__label" for="from">From</label>
+              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="from">
+                <li class="mdl-menu__item" data-val="xuebin">Xuebin</li>
+                <li class="mdl-menu__item" data-val="yunhe">Yunhe</li>
+              </ul>
           </div>
         </div>
         <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="to" name="to" disabled>
-            <label class="mdl-textfield__label" for="to">To</label>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+            <input class="mdl-textfield__input" id="to" name="to" type="text" readonly tabIndex="-1" disabled/>
+              <label class="mdl-textfield__label" for="to">To</label>
+              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="to">
+                <li class="mdl-menu__item" data-val="xuebin">Xuebin</li>
+                <li class="mdl-menu__item" data-val="yunhe">Yunhe</li>
+              </ul>
           </div>
         </div>
 
@@ -74,12 +80,18 @@ $(document).ready(function () {
           </div>
         </div>
         <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="category" name="category">
-            <label class="mdl-textfield__label" for="category">Category</label>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+            <input class="mdl-textfield__input" id="category" name="category" type="text" readonly tabIndex="-1"/>
+              <label class="mdl-textfield__label" for="category">Category</label>
+              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="category">
+                <li class="mdl-menu__item" data-val="rent">Rent</li>
+                <li class="mdl-menu__item" data-val="internet">Internet</li>
+                <li class="mdl-menu__item" data-val="restaurant">Restaurant</li>
+                <li class="mdl-menu__item" data-val="electric">Electric</li>
+                <li class="mdl-menu__item" data-val="other">Other</li>
+              </ul>
           </div>
         </div>
-
 
         <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -88,7 +100,6 @@ $(document).ready(function () {
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
         </div>
-
 
         <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
