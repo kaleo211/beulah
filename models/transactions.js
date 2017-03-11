@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('transaction', {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
