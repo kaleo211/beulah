@@ -22,8 +22,8 @@ router.post('/addTransaction', function (req, res) {
     body.memo,
     body.type,
     body.category
-  ).then(function (resp) {
-    res.status(200);
+  ).then(function (transaction) {
+    res.status(200).json(transaction);
   });
 });
 
