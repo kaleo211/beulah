@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
 
 router.post('/addTransaction', function (req, res) {
   var body = req.body;
-  resp = controllers.transaction.addTransaction(
+  controllers.transaction.addTransaction(
     body.from,
     body.to,
     body.total,
