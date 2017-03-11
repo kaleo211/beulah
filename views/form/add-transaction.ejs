@@ -5,7 +5,7 @@
       <div class="mdl-grid mdl-grid--nesting">
         <div class="mdl-cell mdl-cell--2-col">
           <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="expense">
-            <input type="radio" id="expense" class="mdl-radio__button" name="type" value="expense" checked onclick="disableTo();">
+            <input type="radio" id="expense" class="mdl-radio__button" name="type" value="expense" checked onclick="enableExpense();">
             <span class="mdl-radio__label">
               <i class="material-icons mdl-list__item-icon">domain</i>
             </span>
@@ -13,7 +13,7 @@
         </div>
         <div class="mdl-cell mdl-cell--3-col">
           <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="transfer">
-            <input type="radio" id="transfer" class="mdl-radio__button" name="type" value="transfer" onclick="enableTo();">
+            <input type="radio" id="transfer" class="mdl-radio__button" name="type" value="transfer" onclick="enableTransfer();">
             <span class="mdl-radio__label">
               <i class="material-icons mdl-list__item-icon">attach_money</i>
             </span>
@@ -36,6 +36,7 @@
             <input class="mdl-textfield__input" id="to" name="to" type="text" readonly tabIndex="-1" disabled/>
               <label class="mdl-textfield__label" for="to">To</label>
               <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="to">
+                <li id="emptyTo" class="mdl-menu__item" data-val=""></li>
                 <li class="mdl-menu__item" data-val="xuebin">Xuebin</li>
                 <li class="mdl-menu__item" data-val="yunhe">Yunhe</li>
               </ul>
@@ -53,6 +54,7 @@
             <input class="mdl-textfield__input" id="category" name="category" type="text" readonly tabIndex="-1"/>
               <label class="mdl-textfield__label" for="category">Category</label>
               <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="category">
+                <li id="emptyCategory" class="mdl-menu__item" data-val=""></li>
                 <li class="mdl-menu__item" data-val="rent">Rent</li>
                 <li class="mdl-menu__item" data-val="internet">Internet</li>
                 <li class="mdl-menu__item" data-val="restaurant">Restaurant</li>

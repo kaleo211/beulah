@@ -1,9 +1,11 @@
-var disableTo = function () {
+var enableExpense = function () {
+  $("#emptyTo").click();
   $("#to").attr("disabled", "");
   $("#category").removeAttr("disabled");
 };
 
-var enableTo = function () {
+var enableTransfer = function () {
+  $("#emptyCategory").click();
   $("#category").attr("disabled", "");
   $("#to").removeAttr("disabled");
 };
