@@ -1,3 +1,15 @@
+<script>
+var disableTo = function() {
+  document.getElementById("to").setAttribute("disabled", "");
+  document.getElementById("category").removeAttribute("disabled");
+};
+
+var enableTo = function() {
+  document.getElementById("category").setAttribute("disabled", "");
+  document.getElementById("to").removeAttribute("disabled");
+};
+</script>
+
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--3-col"></div>
   <div class="mdl-cell mdl-cell--6-col  mdl-shadow--2dp">
