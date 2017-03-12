@@ -45,8 +45,9 @@
 
         <div class="mdl-cell mdl-cell--6-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="date" name="date">
+            <input class="mdl-textfield__input" type="text" id="date" name="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
             <label class="mdl-textfield__label" for="date">Date</label>
+            <span class="mdl-textfield__error">Date should be YYYY-MM-DD</span>
           </div>
         </div>
         <div class="mdl-cell mdl-cell--6-col">
