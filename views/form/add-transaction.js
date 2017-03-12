@@ -25,11 +25,8 @@ var isEmpty = function (field) {
 var checkEmtpy = function () {
   if (isEmpty("from")) return;
   if (isEmpty("date")) return;
-  if ($(expense).is("[checked]")) {
-    if (isEmpty("category")) return;
-  } else {
-    if (isEmpty("to")) return;
-  }
+  if (!$("#category").is("[disabled]") && isEmpty("category")) return;
+  if (!$("#to").is("[disabled]") && isEmpty("to")) return;
   if (isEmpty("total")) return;
 }
 
