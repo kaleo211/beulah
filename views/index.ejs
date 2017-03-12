@@ -11,10 +11,10 @@
 </head>
 
 <body class="mdl-demo mdl-base">
-  <div class="mdl-layout mdl-js-layout">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header mdl-color--primary">
-      <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
-      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+      <div class="mdl-layout__header-row mdl-layout--large-screen-only"></div>
+      <div class="mdl-layout__header-row">
         <h2>Beulah</h2>
       </div>
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
@@ -28,13 +28,27 @@
     <main class="mdl-layout__content">
       <section class="mdl-layout__tab-panel is-active" id="all">
         <div class="page-content">
-          <% include summary/summary.ejs %>
-          <% include table/table.ejs %>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
+            <div class="mdl-cell mdl-cell mdl-cell--10-col">
+              <% include summary/summary.ejs %>
+              <% include table/table.ejs %>
+            </div>          
+            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
+          </div>
         </div>
       </section>
 
       <section class="mdl-layout__tab-panel" id="transfers">
-        <div class="page-content">addTransactions</div>
+        <div class="page-content">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
+            <div class="mdl-cell mdl-cell mdl-cell--10-col">
+              <% include table/transfers.ejs %>
+            </div>          
+            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
+          </div>
+        </div>
       </section>
 
       <section class="mdl-layout__tab-panel" id="add">
