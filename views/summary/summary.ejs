@@ -1,0 +1,20 @@
+<div>
+  <ul class="demo-list-icon mdl-list">
+    <% if (owns.length ==2) {
+         if (owns[0].total < 0) {var tmp = owns[0]; owns[0]=owns[1]; owns[1]=tmp;} %>
+      <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-icon">person</i>
+          <%= owns[0].from + " owns " + owns[0].total + " to " + owns[1].from %>
+        </span>
+      </li>
+    <% } else {owns.forEach( function(own) { %>
+      <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-icon">person</i>
+          <%= own.from + " owns " + own.total + " to pool" %>
+        </span>
+      </li>
+    <% });} %>
+  </ul>
+</div>

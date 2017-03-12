@@ -1,7 +1,9 @@
 var transaction = require('./transaction');
+var summary = require('./summary');
 
 var controllers = {
-  transaction
+  transaction,
+  summary
 };
 
 module.exports = controllers;
