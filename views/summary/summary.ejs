@@ -5,14 +5,14 @@
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
           <i class="material-icons mdl-list__item-icon">person</i>
-          <%= owns[0].from + " owns " + owns[0].total + " to " + owns[1].from %>
+          <%= owns[0].from + " owns " + owns[0].total.toFixed(2) + " to " + owns[1].from %>
         </span>
       </li>
     <% } else {owns.forEach( function(own) { %>
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
           <i class="material-icons mdl-list__item-icon">person</i>
-          <%= own.from + " owns " + own.total + " to pool" %>
+          <%= own.from + " owns " + own.total.toFixed(2) + " to pool" %>
         </span>
       </li>
     <% });} %>
