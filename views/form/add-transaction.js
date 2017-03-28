@@ -21,11 +21,12 @@ var isEmpty = function (field) {
 }
 
 var checkEmtpy = function () {
-  if (isEmpty("from")) return;
-  if (isEmpty("date")) return;
-  if (!$("#category").is("[disabled]") && isEmpty("category")) return;
-  if (!$("#to").is("[disabled]") && isEmpty("to")) return;
-  if (isEmpty("total")) return;
+  if (isEmpty("from")) return true;
+  if (isEmpty("date")) return true;
+  if (!$("#category").is("[disabled]") && isEmpty("category")) return true;
+  if (!$("#to").is("[disabled]") && isEmpty("to")) return true;
+  if (isEmpty("total")) return true;
+  return false;
 }
 
 var cleanForm = function () {
@@ -40,8 +41,11 @@ var cleanForm = function () {
 
 $(document).ready(function () {
   $(document).on('submit', '#addTransaction', function (event) {
-    checkEmtpy();
     event.preventDefault();
+
+    if (checkEmtpy()) {
+      return;
+    }
 
     $.ajax({
       url: 'addTransaction',
