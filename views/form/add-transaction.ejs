@@ -1,95 +1,83 @@
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--3-col"></div>
-  <div class="mdl-cell mdl-cell--6-col  mdl-shadow--2dp">
-    <form id="addTransaction" action="addTransaction" method="post">
-      <div class="mdl-grid mdl-grid--nesting">
-        <div class="mdl-cell mdl-cell--2-col">
-          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="expense">
-            <input type="radio" id="expense" class="mdl-radio__button" name="type" value="expense" checked onclick="enableExpense();">
-            <span class="mdl-radio__label">
-              <i class="material-icons mdl-list__item-icon">domain</i>
-            </span>
-          </label>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col">
-          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="transfer">
-            <input type="radio" id="transfer" class="mdl-radio__button" name="type" value="transfer" onclick="enableTransfer();">
-            <span class="mdl-radio__label">
-              <i class="material-icons mdl-list__item-icon">attach_money</i>
-            </span>
-          </label>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col"></div>
-
-        <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-            <input class="mdl-textfield__input" id="from" name="from" type="text" readonly tabIndex="-1"/>
-              <label class="mdl-textfield__label" for="from">From</label>
-              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="from">
-                <li class="mdl-menu__item" data-val="xuebin">Xuebin</li>
-                <li class="mdl-menu__item" data-val="yunhe">Yunhe</li>
-              </ul>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-            <input class="mdl-textfield__input" id="to" name="to" type="text" readonly tabIndex="-1" disabled/>
-              <label class="mdl-textfield__label" for="to">To</label>
-              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="to">
-                <li id="emptyTo" class="mdl-menu__item" data-val=""></li>
-                <li class="mdl-menu__item" data-val="xuebin">Xuebin</li>
-                <li class="mdl-menu__item" data-val="yunhe">Yunhe</li>
-              </ul>
-          </div>
-        </div>
-
-        <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="date" name="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-            <label class="mdl-textfield__label" for="date">Date</label>
-            <span class="mdl-textfield__error">Date should be YYYY-MM-DD</span>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-            <input class="mdl-textfield__input" id="category" name="category" type="text" readonly tabIndex="-1"/>
-              <label class="mdl-textfield__label" for="category">Category</label>
-              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="category">
-                <li id="emptyCategory" class="mdl-menu__item" data-val=""></li>
-                <li class="mdl-menu__item" data-val="rent">Rent</li>
-                <li class="mdl-menu__item" data-val="internet">Internet</li>
-                <li class="mdl-menu__item" data-val="restaurant">Restaurant</li>
-                <li class="mdl-menu__item" data-val="electric">Electric</li>
-                <li class="mdl-menu__item" data-val="other">Other</li>
-              </ul>
-          </div>
-        </div>
-
-        <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="total" name="total">
-            <label class="mdl-textfield__label" for="total">Total</label>
-            <span class="mdl-textfield__error">Input is not a number!</span>
-          </div>
-        </div>
-
-        <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="memo" name="memo">
-            <label class="mdl-textfield__label" for="memo">Memo</label>
-          </div>
-        </div>
-
-        <div class="mdl-cell mdl-cell--10-col"></div>
-        <div class="mdl-cell mdl-cell--2-col">
-          <button class="mdl-button mdl-button--raised mdl-js-button mdl-button--colored mdl-button--floating mdl-js-ripple-effect">
-            Submit
-          </button>
-        </div>
+<div class="row z-depth-2">
+  <form id="addTransaction" action="addTransaction" method="post">
+    <div class="row">
+      <div class="input-field col s2 m2 l2">
+        <i class="material-icons prefix">domain</i>
+        <input type="radio" id="expense" class="with-gap" name="type" value="expense" checked onclick="enableExpense();">
+        <label for="expense"></label>
       </div>
-    </form>
-  </div>
-  <div class="mdl-cell mdl-cell--3-col"></div>
+      <div class="col s1 m1 l1"></div>
+
+      <div class="input-field col s2 m2 l2">
+        <i class="material-icons prefix">attach_money</i>
+        <input type="radio" id="transfer" class="with-gap" name="type" value="transfer" onclick="enableTransfer();">
+        <label for="transfer"></label>
+      </div>
+      <div class="col s6 m6 l6"></div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6 m6 l6">
+        <select name="from" id="from">
+          <option value="" selected></option>
+          <option value="xuebin">Xuebin</option>
+          <option value="yunhe">Yunhe</option>
+        </select>
+        <label>From</label>
+      </div>
+
+      <div class="input-field col s6 m6 l6">
+        <select name="to", id="to">
+          <option value="" selected></option>
+          <option value="xuebin">Xuebin</option>
+          <option value="yunhe">Yunhe</option>
+        </select>
+        <label>To</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6 m6 l6">
+        <input type="date" id="date" name="date" class="datepicker">
+        <label>Date</label>
+      </div>
+
+      <div class="input-field col s6 m6 l6">
+        <select name="category" id="category">
+          <option value="" selected></option>
+          <option value="rent">Rent</option>
+          <option value="internet">Internet</option>
+          <option value="electric">Electric</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="other">Other</option>
+        </select>
+        <label>Category</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col col--12-col">
+        <input id="total" name="total" type="number" class="validate">
+        <label for="total" data-error="Input is not a number!">Total</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col col--12-col">
+        <input type="text" id="memo" name="memo">
+        <label for="memo">Memo</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s10 m10 l10"></div>
+      <div class="col s2 m2 l2">
+        <button class="btn waves-effect waves-light" type="submit" name="addTransaction">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 
 <div id="messageBar" class="mdl-js-snackbar mdl-snackbar">

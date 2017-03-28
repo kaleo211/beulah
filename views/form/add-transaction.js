@@ -14,9 +14,7 @@ var snackbarContainer = document.querySelector('#messageBar');
 
 var isEmpty = function (field) {
   if (!$("#" + field).val()) {
-    snackbarContainer.MaterialSnackbar.showSnackbar(
-      { message: field.toUpperCase() + " should not be empty!" }
-    );
+    Materialize.toast(field.toUpperCase() + " should not be empty!", 3000, null, null);
     return true;
   }
   return false;
@@ -51,8 +49,7 @@ $(document).ready(function () {
       dataType: 'json',
       data: $('form#addTransaction').serialize(),
       success: function (data) {
-        var data = { message: 'Successfully added.' };
-        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        Materialize.toast('Successfully added.', 3000, null, null);
       }
     });
 

@@ -1,62 +1,73 @@
 <!doctype html>
 <html>
 <head>
-  <link rel="stylesheet" href="/css/material.min.css">
-  <link rel="stylesheet" href="/css/application.css">
-  <script src="/js/material.min.js"></script>
-  <script src="/js/jquery.min.js"></script>
-
-  <link rel="stylesheet" href="/css/getmdl-select.min.css">
-  <script defer src="/js/getmdl-select.min.js"></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/materialize.min.css">
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
+    });
+  </script>
 </head>
 
-<body class="mdl-demo mdl-base">
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-color--primary">
-      <div class="mdl-layout__header-row mdl-layout--large-screen-only"></div>
-      <div class="mdl-layout__header-row">
-        <h2>Beulah</h2>
+<body>
+  <div calss="navbar-fixed">
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">&nbsp Beulah</a>
       </div>
-      <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-        <a href="#all" class="mdl-layout__tab is-active">All</a>
-        <a href="#transfers" class="mdl-layout__tab">Transfers</a>
-        <div class="mdl-layout-spacer"></div>
-        <a href="#add" class="mdl-layout__tab">Add</a>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="#all">All</a></li>
+          <li class="tab"><a href="#transactions">Transactions</a></li>
+          <li class="tab"><a href="#add">Add</a></li>
+        </ul>
       </div>
-    </header>
+    </nav>
+  </div>
 
-    <main class="mdl-layout__content">
-      <section class="mdl-layout__tab-panel is-active" id="all">
-        <div class="page-content">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
-            <div class="mdl-cell mdl-cell mdl-cell--10-col">
-              <% include summary/summary.ejs %>
-              <% include table/table.ejs %>
-            </div>          
-            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
-          </div>
-        </div>
-      </section>
+  <div id="all">
+    <div class="row">
+      <div class="col s0 m1 l1"></div>
+      <div class="col s12 m10 l10">
+        <% include summary/summary.ejs %>
+      </div>
+      <div class="col s0 m1 l1"></div>
+    </div>
 
-      <section class="mdl-layout__tab-panel" id="transfers">
-        <div class="page-content">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
-            <div class="mdl-cell mdl-cell mdl-cell--10-col">
-              <% include table/transfers.ejs %>
-            </div>          
-            <div class="mdl-cell mdl-cell mdl-cell--1-col"></div>
-          </div>
-        </div>
-      </section>
+    <div class="row">
+      <div class="col s0 m1 l1"></div>
+      <div class="col s12 m10 l10">
+        <% include table/table.ejs %>
+      </div>
+      <div class="col s0 m1 l1"></div>
+    </div>
+  </div>
 
-      <section class="mdl-layout__tab-panel" id="add">
-        <div class="page-content">
-          <% include form/add-transaction.ejs %>
-        </div>
-      </section>
-    </main>
+  <div id="transactions">
+    <div class="row">
+      <div class="col s0 m1 l1"></div>
+      <div class="col s12 m10 l10">
+        <% include table/transfers.ejs %>
+      </div>
+      <div class="col s0 m1 l1"></div>
+    </div>
+  </div>
+
+  <div id="add">
+    <div class="row">
+      <div class="col s0 m1 l3"></div>
+      <div class="col s12 m10 l6">
+        <% include form/add-transaction.ejs %>
+      </div>
+      <div class="col s0 m1 l3"></div>
+    </div>
   </div>
 </body>
 </html>
