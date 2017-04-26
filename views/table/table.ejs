@@ -19,10 +19,8 @@
         <td><%= transaction.category %></td>
         <td><%= transaction.date.toISOString().slice(0,10) %></td>
         <td><%= transaction.memo %></td>
-        <td><%= transaction.total%></td>
+        <td><%= transaction.total.toFixed(2) %></td>
       </tr>
     <% }) %>
   </tbody>
 </table>
-
-

@@ -14,7 +14,7 @@ var addTransaction = function (from, to, total, date, memo, type, category) {
     from: from,
     to: to,
     total: total,
-    date: date,
+    date: new Date(date),
     type: type,
     category: category,
     memo: memo

@@ -53,7 +53,10 @@ $(document).ready(function () {
       dataType: 'json',
       data: $('form#addTransaction').serialize(),
       success: function (data) {
-        Materialize.toast('Successfully added.', 3000, null, null);
+        Materialize.toast('Successfully added!', 3000, null, null);
+      },
+      error: function () {
+        Materialize.toast('Failed to submit!', 3000, null, null);
       }
     });
 
