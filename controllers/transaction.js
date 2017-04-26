@@ -2,11 +2,13 @@ var Sequelize = require('sequelize');
 var models = require('../models');
 
 var getAllTransactions = function () {
-  return models.transaction.findAll().then((transactions) => {
-    return transactions.map(function (transaction) {
-      return transaction.get({ plain: true })
-    });
-  });
+  return models.transaction
+      .findAll({order: [['date', 'DESC']]})
+      .then((transactions) => {
+        return transactions.map(function (transaction) {
+          return transaction.get({ plain: true })
+        });
+      });
 };
 
 var addTransaction = function (from, to, total, date, memo, type, category) {
