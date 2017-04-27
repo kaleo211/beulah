@@ -7,10 +7,11 @@
   <script type="text/javascript" src="/js/materialize.min.js"></script>
   <script>
     $(document).ready(function() {
+      $('.modal').modal();
       $('select').material_select();
       $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
+        selectMonths: true,
+        selectYears: 15
       });
     });
   </script>
@@ -22,12 +23,10 @@
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">&nbsp Beulah</a>
       </div>
-      <div class="nav-content">
-        <ul class="tabs tabs-transparent">
-          <li class="tab"><a href="#all">All</a></li>
-          <li class="tab"><a href="#transactions">Transactions</a></li>
-          <li class="tab"><a href="#add">Add</a></li>
-        </ul>
+      <div class="nav-content row">
+        <a href="#add" class="btn-floating btn-large halfway-fab waves-effect waves-light">
+          <i class="material-icons orange">add</i>
+        </a>
       </div>
     </nav>
   </div>
@@ -50,23 +49,13 @@
     </div>
   </div>
 
-  <div id="transactions">
-    <div class="row">
-      <div class="col s0 m1 l1"></div>
-      <div class="col s12 m10 l10">
-        <% include table/transfers.ejs %>
-      </div>
-      <div class="col s0 m1 l1"></div>
+  <div id="add" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>New</h4>
+      <% include form/add-transaction.ejs %>
     </div>
-  </div>
-
-  <div id="add">
-    <div class="row">
-      <div class="col s0 m1 l3"></div>
-      <div class="col s12 m10 l6">
-        <% include form/add-transaction.ejs %>
-      </div>
-      <div class="col s0 m1 l3"></div>
+    <div class="modal-footer">
+      <button type="submit" form="addTransaction" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
     </div>
   </div>
 </body>

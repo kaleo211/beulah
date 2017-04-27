@@ -1,99 +1,91 @@
-<div class="row z-depth-2">
-  <form id="addTransaction" action="addTransaction" method="post">
-    <div class="row">
-      <div class="input-field col s2 m2 l2">
-        <i class="material-icons prefix">domain</i>
-        <input type="radio" id="expense" class="with-gap" name="type" value="expense" checked onclick="enableExpense();">
-        <label for="expense"></label>
-      </div>
-      <div class="col s1 m1 l1"></div>
+<form id="addTransaction" action="addTransaction" method="post">
+  <div class="row">
+    <div class="input-field col s2 m2 l2">
+      <i class="material-icons prefix">domain</i>
+      <input type="radio" id="expense" class="with-gap" name="type" value="expense" checked onclick="enableExpense();">
+      <label for="expense"></label>
+    </div>
+    <div class="col s1 m1 l1"></div>
 
-      <div class="input-field col s2 m2 l2">
-        <i class="material-icons prefix">attach_money</i>
-        <input type="radio" id="transfer" class="with-gap" name="type" value="transfer" onclick="enableTransfer();">
-        <label for="transfer"></label>
-      </div>
-      <div class="col s6 m6 l6"></div>
+    <div class="input-field col s2 m2 l2">
+      <i class="material-icons prefix">attach_money</i>
+      <input type="radio" id="transfer" class="with-gap" name="type" value="transfer" onclick="enableTransfer();">
+      <label for="transfer"></label>
+    </div>
+    <div class="col s6 m6 l6"></div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6 m6 l6">
+      <select name="from" id="from">
+        <option value="" selected></option>
+        <option value="xuebin">Xuebin</option>
+        <option value="yunhe">Yunhe</option>
+      </select>
+      <label>From</label>
     </div>
 
-    <div class="row">
-      <div class="input-field col s6 m6 l6">
-        <select name="from" id="from">
-          <option value="" selected></option>
-          <option value="xuebin">Xuebin</option>
-          <option value="yunhe">Yunhe</option>
-        </select>
-        <label>From</label>
-      </div>
+    <div class="input-field col s6 m6 l6">
+      <select name="to", id="to">
+        <option value="" selected></option>
+        <option value="xuebin">Xuebin</option>
+        <option value="yunhe">Yunhe</option>
+      </select>
+      <label>To</label>
+    </div>
+  </div>
 
-      <div class="input-field col s6 m6 l6">
-        <select name="to", id="to">
-          <option value="" selected></option>
-          <option value="xuebin">Xuebin</option>
-          <option value="yunhe">Yunhe</option>
-        </select>
-        <label>To</label>
-      </div>
+  <div class="row">
+    <div class="input-field col s6 m6 l6">
+      <select name="category" id="category">
+        <option value="" selected></option>
+        <option value="rent">Rent</option>
+        <option value="internet">Internet</option>
+        <option value="electric">Electric</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="other">Other</option>
+      </select>
+      <label>Category</label>
     </div>
 
-    <div class="row">
-      <div class="input-field col s6 m6 l6">
-        <select name="category" id="category">
-          <option value="" selected></option>
-          <option value="rent">Rent</option>
-          <option value="internet">Internet</option>
-          <option value="electric">Electric</option>
-          <option value="restaurant">Restaurant</option>
-          <option value="other">Other</option>
-        </select>
-        <label>Category</label>
-      </div>
-
-      <div class="input-field col s6 m6 l6">
-        <input type="date" id="date" name="date" class="datepicker">
-        <label>Date</label>
-      </div>
+    <div class="input-field col s6 m6 l6">
+      <input type="date" id="date" name="date" class="datepicker">
+      <label>Date</label>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="input-field col s12 m6 l6">
-        <input id="total" name="total" type="number" class="validate">
-        <label for="total" data-error="Input is not a number!">Total</label>
-      </div>
+  <div class="row">
+    <div class="input-field col s12 m6 l6">
+      <input id="total" name="total" type="number" class="validate">
+      <label for="total" data-error="Input is not a number!">Total</label>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="input-field col s12 m6 l6">
-        <input type="text" id="memo" name="memo">
-        <label for="memo">Memo</label>
-      </div>
+  <div class="row">
+    <div class="input-field col s12 m6 l6">
+      <input type="text" id="memo" name="memo">
+      <label for="memo">Memo</label>
     </div>
+  </div>
+</form>
 
-    <div class="row">
-      <div class="col s8 m8 l8"></div>
-      <div class="col s4 m4 l4">
-        <button class="btn waves-effect waves-light blue lighten-1" type="submit" name="addTransaction">Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
+<script>
+  <% include add-transaction.js %>
+</script>
 
-<script><% include add-transaction.js %></script>
 <style>
-[type="radio"].with-gap:checked + label:before {
-border-radius: 50%;
-border: 2px solid #0277bd; }
+  [type="radio"].with-gap:checked + label:before {
+  border-radius: 50%;
+  border: 2px solid #0277bd; }
 
-[type="radio"].with-gap:checked + label:after {
-border-radius: 50%;
-border: 2px solid #0277bd;
-background-color: #0277bd;
-z-index: 0;
--webkit-transform: scale(.5);
--moz-transform: scale(.5);
--ms-transform: scale(.5);
--o-transform: scale(.5);
-transform: scale(.5); }
+  [type="radio"].with-gap:checked + label:after {
+  border-radius: 50%;
+  border: 2px solid #0277bd;
+  background-color: #0277bd;
+  z-index: 0;
+  -webkit-transform: scale(.5);
+  -moz-transform: scale(.5);
+  -ms-transform: scale(.5);
+  -o-transform: scale(.5);
+  transform: scale(.5); }
 </style>

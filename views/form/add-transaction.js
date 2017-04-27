@@ -54,6 +54,7 @@ $(document).ready(function () {
       data: $('form#addTransaction').serialize(),
       success: function (data) {
         Materialize.toast('Successfully added!', 3000, null, null);
+        location.reload();
       },
       error: function () {
         Materialize.toast('Failed to submit!', 3000, null, null);
