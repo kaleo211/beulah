@@ -1,13 +1,14 @@
 var enableExpense = function () {
-  $("#emptyTo").click();
+  console.log("i am here");
   $("#to").attr("disabled", "");
   $("#category").removeAttr("disabled");
+  $('select').material_select('update');
 };
 
 var enableTransfer = function () {
-  $("#emptyCategory").click();
   $("#category").attr("disabled", "");
   $("#to").removeAttr("disabled");
+  $('select').material_select('update');
 };
 
 var snackbarContainer = document.querySelector('#messageBar');
