@@ -1,10 +1,10 @@
 <form id="addTransaction" action="addTransaction" method="post">
   <div class="input-field">
-    <input type="radio" id="expense" class="with-gap" name="type" value="expense" checked onclick="enableExpense();">
+    <input type="radio" id="expense" class="with-gap" name="type" value="Expense" checked onclick="enableExpense();">
     <label for="expense">Expense</label>
   </div>
   <div class="input-field">
-    <input type="radio" id="transfer" class="with-gap" name="type" value="transfer" onclick="enableTransfer();">
+    <input type="radio" id="transfer" class="with-gap" name="type" value="Transfer" onclick="enableTransfer();">
     <label for="transfer">Transfer</label>
   </div>
   &nbsp
@@ -16,8 +16,8 @@
     <div class="input-field col s6 m6 l6">
       <select id="from" name="from">
         <option value="" selected></option>
-        <option value="xuebin">Xuebin</option>
-        <option value="yunhe">Yunhe</option>
+        <option value="Xuebin">Xuebin</option>
+        <option value="Yunhe">Yunhe</option>
       </select>
       <label>From</label>
     </div>
@@ -25,8 +25,8 @@
     <div class="input-field col s6 m6 l6">
       <select id="to" name="to" disabled>
         <option value="" selected></option>
-        <option value="xuebin">Xuebin</option>
-        <option value="yunhe">Yunhe</option>
+        <option value="Xuebin">Xuebin</option>
+        <option value="Yunhe">Yunhe</option>
       </select>
       <label>To</label>
     </div>
@@ -36,11 +36,11 @@
     <div class="input-field col s6 m6 l6">
       <select id="category" name="category">
         <option value="" selected></option>
-        <option value="rent">Rent</option>
-        <option value="internet">Internet</option>
-        <option value="electric">Electric</option>
-        <option value="restaurant">Restaurant</option>
-        <option value="other">Other</option>
+        <option value="Rent">Rent</option>
+        <option value="Internet">Internet</option>
+        <option value="Electric">Electric</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Other">Other</option>
       </select>
       <label>Category</label>
     </div>
