@@ -7,7 +7,7 @@
       <th>CATEGORY</th>
       <th>DATE</th>
       <th>MEMO</th>
-      <th>TOTAL</th>
+      <th style="text-align: right;padding-right: 1.5em;">TOTAL</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +19,7 @@
         <td><%= transaction.category %></td>
         <td><%= transaction.date.toISOString().slice(0,10) %></td>
         <td><%= transaction.memo %></td>
-        <td><%= transaction.total.toFixed(2) %></td>
+        <td style="text-align: right;padding-right: 1.5em;"><%= transaction.total.toFixed(2) %></td>
       </tr>
     <% }) %>
   </tbody>
