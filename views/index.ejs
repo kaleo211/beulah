@@ -24,7 +24,7 @@
         <a href="#" class="brand-logo">&nbsp Beulah</a>
       </div>
       <div class="nav-content row">
-        <a href="#add" class="btn-floating btn-large halfway-fab waves-effect waves-light">
+        <a id="addTransactionButton" href="#addTransactionModal" class="btn-floating btn-large halfway-fab waves-effect waves-light">
           <i class="material-icons orange">add</i>
         </a>
       </div>
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div id="add" class="modal modal-fixed-footer">
+  <div id="addTransactionModal" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>New</h4>
       <% include form/add-transaction.ejs %>
