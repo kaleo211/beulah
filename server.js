@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use('/', router);
 app.use(express.static(__dirname + '/public'));
 
+app.set('views', __dirname + '/views');
 
 app.listen(3000, function () {
   console.log('Beulah is listening on port 3000!');

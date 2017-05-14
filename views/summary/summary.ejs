@@ -1,20 +1,17 @@
-<div>
+<div ng-controller="SummaryCtrl">
   <ul class="demo-list-icon mdl-list">
-    <% if (owns.length ==2) {
-         if (owns[0].total < 0) {var tmp = owns[0]; owns[0]=owns[1]; owns[1]=tmp;} %>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-icon">person</i>
-          <%= owns[0].from + " owns " + owns[0].total.toFixed(2) + " to " + owns[1].from %>
-        </span>
-      </li>
-    <% } else {owns.forEach( function(own) { %>
-      <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-icon">person</i>
-          <%= own.from + " owns " + own.total.toFixed(2) + " to pool" %>
-        </span>
-      </li>
-    <% });} %>
+    <li ng-if="debts.length==2" class="mdl-list__item">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-icon">person</i>
+        {{ debts[0].from }} owns {{ debts[0].total.toFixed(2) }} to {{ debts[1].from }}
+      </span>
+    </li>
+
+    <li ng-if="debts.length>2" ng-repeat="debt in debts" class="mdl-list__item">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-icon">person</i>
+        {{ debt.from }} owns {{ debt.total.toFixed(2) }} to pool
+      </span>
+    </li>
   </ul>
 </div>

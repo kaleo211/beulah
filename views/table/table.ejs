@@ -1,4 +1,4 @@
-<table class="striped centered card">
+<table ng-controller="TransactionCtrl" class="striped centered card">
   <thead>
     <tr>
       <th>FROM</th>
@@ -11,16 +11,14 @@
     </tr>
   </thead>
   <tbody>
-    <% transactions.forEach(function (transaction) { %>
-      <tr>
-        <td><%= transaction.from %></td>
-        <td><%= transaction.to %></td>
-        <td><%= transaction.type %></td>
-        <td><%= transaction.category %></td>
-        <td><%= transaction.date.toISOString().slice(0,10) %></td>
-        <td><%= transaction.memo %></td>
-        <td style="text-align: right;padding-right: 1.5em;"><%= transaction.total.toFixed(2) %></td>
+      <tr ng-repeat="t in transactions">
+        <td>{{ t.from }}</td>
+        <td>{{ t.to }}</td>
+        <td>{{ t.type }}</td>
+        <td>{{ t.category }}</td>
+        <td>{{ t.date.toISOString().slice(0,10) }}</td>
+        <td>{{ t.memo }}</td>
+        <td style="text-align: right;padding-right: 1.5em;">{{ t.total.toFixed(2) }}</td>
       </tr>
-    <% }) %>
   </tbody>
 </table>

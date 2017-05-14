@@ -2,9 +2,16 @@ var Sequelize = require('sequelize');
 var models = require('../models');
 var utils = require('./utils');
 
-var getAllTransactions = function () {
+var get = function (option) {
   return models.transaction
-      .findAll({order: [['date', 'DESC']]})
+      .findAll({
+        order: [['date', 'DESC']]
+        // where: {
+        //   type: option['type'],
+        //   category: option['category'],
+        //   date: option['date']
+        // }
+      })
       .then((transactions) => {
         return transactions.map(function (transaction) {
           t = transaction.get({ plain: true })
@@ -17,7 +24,7 @@ var getAllTransactions = function () {
       });
 };
 
-var addTransaction = function (from, to, total, date, memo, type, category) {
+var add = function (from, to, total, date, memo, type, category) {
   return models.transaction.create({
     from: from.toLowerCase(),
     to: type.toLowerCase()=="transfer" ? to.toLowerCase() : "",
@@ -32,8 +39,8 @@ var addTransaction = function (from, to, total, date, memo, type, category) {
 }
 
 var transaction = {
-  getAllTransactions,
-  addTransaction
+  get,
+  add
 }
 
 module.exports = transaction

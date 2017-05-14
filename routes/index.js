@@ -7,17 +7,24 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-  Promise.all([
-    controllers.transaction.getAllTransactions(),     
-    controllers.summary.get()
-  ]).then(([transactions, owns]) => {
-    res.status(200).render('index', {transactions, owns});
+  res.status(200).render('index');
+});
+
+router.get('/summary', function(req, res){
+  controllers.summary.get().then(function(debts) {
+    res.status(200).send(JSON.stringify(debts));
+  });
+});
+
+router.get('/transactions', function(req, res) {
+  controllers.transaction.get().then(function(transactions) {
+    res.status(200).send(JSON.stringify(transactions));
   });
 });
 
 router.post('/addTransaction', function (req, res) {
   var body = req.body;
-  controllers.transaction.addTransaction(
+  controllers.transaction.add(
     body.from,
     body.to,
     body.total,
