@@ -7,10 +7,24 @@ var app = angular.module('app', [
   'summary'
 ]);
 
-app.controller('AppCtrl', [function() {
+app.controller('AppCtrl', function($scope, $mdDialog) {
   angular.element(document).ready(function () {
   });
-}]);
+
+  $scope.show = function(ev) {
+    $mdDialog.show({
+      contentElement: '#myDialog',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: true
+    });
+  };
+
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+});
 
 app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode({

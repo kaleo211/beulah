@@ -19,42 +19,65 @@
 </head>
 
 <body ng-controller="AppCtrl">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <md-truncate>
-          Beulah
-        </md-truncate>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-truncate>
+        Beulah
+      </md-truncate>
 
-        <span flex=""></span>
-        <md-button class="md-fab md-mini" aria-label="Favorite">
-          <md-icon>add</md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-
-    <md-content>
-      <div id="all">
-        <div layout="row">
-          <div flex>
-            <% include summary/summary.ejs %>
-          </div>
-        </div>
-
-        <div layout="row">
-          <div flex="100">
-            <% include table/table.ejs %>
-          </div>
-        </div>
-      </div>
-    </md-content>
-
-  <div id="addTransactionModal" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>New</h4>
-      <% include form/add-transaction.ejs %>
+      <span flex=""></span>
+      <md-button ng-click="show($event)" class="md-fab md-mini" aria-label="Add New Transaction">
+        <md-icon>add</md-icon>
+      </md-button>
     </div>
-    <div class="modal-footer">
-      <button type="submit" form="addTransaction" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+  </md-toolbar>
+
+  <md-content>
+    <div id="all">
+      <div layout="row">
+        <div flex>
+          <% include summary/summary.ejs %>
+        </div>
+      </div>
+
+      <div layout="row">
+        <div flex="100">
+          <% include table/table.ejs %>
+        </div>
+      </div>
+    </div>
+  </md-content>
+
+  <div style="visibility: hidden">
+    <div class="md-dialog-container" id="myDialog">
+      <md-dialog aria-label="New Transaction">
+        <form ng-cloak>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>New Transaction</h2>
+              <span flex></span>
+              <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon aria-label="Close dialog">close</md-icon>
+              </md-button>
+            </div>
+          </md-toolbar>
+
+          <md-dialog-content>
+            <div class="md-dialog-content">
+              <% include form/add-transaction.ejs %>
+            </div>
+          </md-dialog-content>
+
+          <md-dialog-actions layout="row">
+            <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>3</md-button>
+            <span flex></span>
+            <md-button ng-click="answer('not useful')">2
+            </md-button>
+            <md-button ng-click="answer('useful')">1
+            </md-button>
+          </md-dialog-actions>
+        </form>
+      </md-dialog>
     </div>
   </div>
 </body>
