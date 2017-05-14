@@ -1,17 +1,14 @@
 var app = angular.module('app', [
+  'md.data.table',
   'ngRoute',
+  'ngMaterial',
+  'ngMessages',
   'transaction',
   'summary'
 ]);
 
 app.controller('AppCtrl', [function() {
   angular.element(document).ready(function () {
-    document.getElementsByClassName('modal').modal();
-    document.getElementsByClassName('datepicker').pickadate({
-      selectMonths: true,
-      selectYears: 15
-    });;
-    document.getElementsByTagName('select').material_select();
   });
 }]);
 

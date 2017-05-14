@@ -3,46 +3,50 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/css/material-icons.css">
-  <link rel="stylesheet" href="/css/materialize.min.css">
-  <script src="/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="/scripts/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="/css/md-data-table.min.css">
+
   <script src="/scripts/angular/angular.min.js"></script>
+  <script src="/js/md-data-table.min.js"></script>
   <script src="/scripts/angular-route/angular-route.min.js"></script>
+  <script src="/scripts/angular-animate/angular-animate.min.js"></script>
+  <script src="/scripts/angular-aria/angular-aria.min.js"></script>
+  <script src="/scripts/angular-messages/angular-messages.min.js"></script>
+  <script src="/scripts/angular-material/angular-material.min.js"></script>
   <script src="/app/app.js"></script>
   <script src="/app/controllers/TransactionCtrl.js"></script>
   <script src="/app/controllers/SummaryCtrl.js"></script>
 </head>
 
 <body ng-controller="AppCtrl">
-  <div calss="navbar-fixed">
-    <nav class="nav-extended black">
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">&nbsp Beulah</a>
-      </div>
-      <div class="nav-content row">
-        <a id="addTransactionButton" href="#addTransactionModal" class="btn-floating btn-large halfway-fab waves-effect waves-light">
-          <i class="material-icons orange">add</i>
-        </a>
-      </div>
-    </nav>
-  </div>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-truncate>
+          Beulah
+        </md-truncate>
 
-  <div id="all">
-    <div class="row">
-      <div class="col s0 m1 l1"></div>
-      <div class="col s12 m10 l10">
-        <% include summary/summary.ejs %>
+        <span flex=""></span>
+        <md-button class="md-fab md-mini" aria-label="Favorite">
+          <md-icon>add</md-icon>
+        </md-button>
       </div>
-      <div class="col s0 m1 l1"></div>
-    </div>
+    </md-toolbar>
 
-    <div class="row">
-      <div class="col s0 m1 l1"></div>
-      <div class="col s12 m10 l10">
-        <% include table/table.ejs %>
+    <md-content>
+      <div id="all">
+        <div layout="row">
+          <div flex>
+            <% include summary/summary.ejs %>
+          </div>
+        </div>
+
+        <div layout="row">
+          <div flex="100">
+            <% include table/table.ejs %>
+          </div>
+        </div>
       </div>
-      <div class="col s0 m1 l1"></div>
-    </div>
-  </div>
+    </md-content>
 
   <div id="addTransactionModal" class="modal modal-fixed-footer">
     <div class="modal-content">

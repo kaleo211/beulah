@@ -1,24 +1,28 @@
-<table ng-controller="TransactionCtrl" class="striped centered card">
-  <thead>
-    <tr>
-      <th>FROM</th>
-      <th>TO</th>
-      <th>TYPE</th>
-      <th>CATEGORY</th>
-      <th>DATE</th>
-      <th>MEMO</th>
-      <th style="text-align: right;padding-right: 1.5em;">TOTAL</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr ng-repeat="t in transactions">
-        <td>{{ t.from }}</td>
-        <td>{{ t.to }}</td>
-        <td>{{ t.type }}</td>
-        <td>{{ t.category }}</td>
-        <td>{{ t.date.toISOString().slice(0,10) }}</td>
-        <td>{{ t.memo }}</td>
-        <td style="text-align: right;padding-right: 1.5em;">{{ t.total.toFixed(2) }}</td>
+<md-card>
+<md-table-container ng-controller="TransactionCtrl">
+  <table md-table>
+    <thead md-head>
+      <tr md-row>
+        <th md-column>FROM</th>
+        <th md-column>TO</th>
+        <th md-column>TYPE</th>
+        <th md-column>CATEGORY</th>
+        <th md-column>DATE</th>
+        <th md-column>MEMO</th>
+        <th md-column md-numeric>TOTAL</th>
       </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody md-body>
+        <tr md-row ng-repeat="t in transactions">
+          <td md-cell>{{ t.from }}</td>
+          <td md-cell>{{ t.to }}</td>
+          <td md-cell>{{ t.type }}</td>
+          <td md-cell>{{ t.category }}</td>
+          <td md-cell>{{ t.date.toISOString().slice(0,10) }}</td>
+          <td md-cell>{{ t.memo }}</td>
+          <td md-cell>{{ t.total | number: 2 }}</td>
+        </tr>
+    </tbody>
+  </table>
+</md-table-container>
+</md-card>
