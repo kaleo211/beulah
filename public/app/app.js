@@ -10,12 +10,7 @@ app.config(function ($routeProvider, $locationProvider) {
     requireBase: false
   });
 
-  $routeProvider
-    .when('/transactions', {
-      templateUrl: '／partials/transactions',
-      controller: 'TransactionCtrl'
-    })
-    .otherwise({redirectTo: '/'});
+  $routeProvider.otherwise({redirectTo: '/'});
 });
 
 

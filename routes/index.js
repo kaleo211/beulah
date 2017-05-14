@@ -22,8 +22,9 @@ router.get('/transactions', function(req, res) {
   });
 });
 
-router.post('/addTransaction', function (req, res) {
+router.post('/transactions', function (req, res) {
   var body = req.body;
+  console.log("body", body);
   controllers.transaction.add(
     body.from,
     body.to,
