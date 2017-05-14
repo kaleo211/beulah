@@ -1,4 +1,4 @@
-<form ng-submit="" ng-controller="TransactionAddCtrl" id="addTransaction">
+<form ng-submit="submit()" ng-controller="TransactionAddCtrl" id="addTransaction">
   <div class="input-field">
     <input type="radio" id="expense" class="with-gap" ng-model="transaction.type" value="Expense" checked ng-click="enableExpense();">
     <label for="expense">Expense</label>

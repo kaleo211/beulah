@@ -9,15 +9,10 @@ angular.module('transaction', [])
     init();
   })
   .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http) {
-
-    var init = function () {
-
-    }
-
+    var init = function () {}
     init();
 
     $scope.transaction = {};
-
 
     $scope.enableExpense = function () {
       console.log("i am here");
@@ -60,26 +55,23 @@ angular.module('transaction', [])
       $("#emptyCategory").click();
     }
 
-    $(document).ready(function () {
-      $(document).on('submit', '#addTransaction', function (event) {
-        event.preventDefault();
+    $scope.submit = function() {
+      event.preventDefault();
+      if (checkEmtpy()) {
+        return;
+      }
 
-        if (checkEmtpy()) {
-          return;
+      $http.post('/transactions', $scope.transaction).then(
+        function (resp) {
+          $scope.transactions = resp.data;
+          Materialize.toast('Successfully added!', 3000, null, null);
+          location.reload();
+        },
+        function (resp) {
+          Materialize.toast('Failed to submit!', 3000, null, null);
         }
+      );
 
-        $http.post('/transactions', $scope.transaction).then(
-          function (resp) {
-            $scope.transactions = resp.data;
-            Materialize.toast('Successfully added!', 3000, null, null);
-            location.reload();
-          },
-          function (resp) {
-            Materialize.toast('Failed to submit!', 3000, null, null);
-          }
-        );
-
-        cleanForm();
-      });
-    });
+      cleanForm();
+    };
   });
