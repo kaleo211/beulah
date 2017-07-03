@@ -8,20 +8,25 @@ angular.module('transaction', [])
 
     init();
   })
-  .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http) {
-    var init = function () {}
-    init();
-
+  .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast) {
     $scope.transaction = {};
+    $scope.transaction.date = new Date();
 
     $scope.disabled = function(id) {
-      console.log('i am here', id);
-      return id=='to'&&$scope.transaction.type=='transfer' || id=='catelog'&&$scope.transaction.type=='expense'
+      return id=='to'&&$scope.transaction.type=='transfer' || id=='catelog'&&$scope.transaction.type=='expense';
     };
 
+    var toast = function(msg) {
+      $mdToast.show({
+        template: '<md-toast class="md-toast">' + msg + '</md-toast>',
+        hideDelay: 6000,
+        position: 'top right'
+      });
+    }
+
     var isEmpty = function (field) {
-      if (!$("#" + field).val()) {
-        Materialize.toast(field.toUpperCase() + " should not be empty!", 3000, null, null);
+      if (!$scope.transaction[field]) {
+        toast(field.toUpperCase() + " SHOULD NOT BE EMPTY!");
         return true;
       }
       return false;
@@ -30,20 +35,10 @@ angular.module('transaction', [])
     var checkEmtpy = function () {
       if (isEmpty("from")) return true;
       if (isEmpty("date")) return true;
-      if (!$("#category").is("[disabled]") && isEmpty("category")) return true;
-      if (!$("#to").is("[disabled]") && isEmpty("to")) return true;
+      if ($scope.transaction.type=='expense' && isEmpty('category')) return true;
+      if ($scope.transaction.type=='transfer' && isEmpty('to')) return true;
       if (isEmpty("total")) return true;
       return false;
-    }
-
-    var cleanForm = function () {
-      var fields = ["date", "total", "memo"];
-      fields.forEach(function (field) {
-        $('#' + field).val('');
-        $('#' + field).parent().removeClass('is-dirty')
-      });
-      $("#emptyTo").click();
-      $("#emptyCategory").click();
     }
 
     $scope.submit = function() {
@@ -55,14 +50,14 @@ angular.module('transaction', [])
       $http.post('/transactions', $scope.transaction).then(
         function (resp) {
           $scope.transactions = resp.data;
-          Materialize.toast('Successfully added!', 3000, null, null);
+          toast('SUCCESSFULLY ADDED!');
           location.reload();
         },
         function (resp) {
-          Materialize.toast('Failed to submit!', 3000, null, null);
+          toast('FAILED TO SUBMIT!');
         }
       );
 
-      cleanForm();
+      $scope.transaction = {};
     };
   });
