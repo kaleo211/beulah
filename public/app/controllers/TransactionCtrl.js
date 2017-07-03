@@ -4,11 +4,13 @@ angular.module('transaction', [])
       $http.get('/transactions').then(function (resp) {
         $scope.transactions = resp.data;
       });
-    }
-
+    };
+    $scope.$on("updateTransactions",function(){
+      init();
+    });
     init();
   })
-  .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast) {
+  .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast, $mdDialog, $rootScope) {
     $scope.transaction = {};
     $scope.transaction.date = new Date();
 
@@ -22,7 +24,7 @@ angular.module('transaction', [])
         hideDelay: 6000,
         position: 'top right'
       });
-    }
+    };
 
     var isEmpty = function (field) {
       if (!$scope.transaction[field]) {
@@ -30,16 +32,14 @@ angular.module('transaction', [])
         return true;
       }
       return false;
-    }
+    };
 
     var checkEmtpy = function () {
-      if (isEmpty("from")) return true;
-      if (isEmpty("date")) return true;
+      if (isEmpty("from") || isEmpty("total") || isEmpty("date")) return true;
       if ($scope.transaction.type=='expense' && isEmpty('category')) return true;
       if ($scope.transaction.type=='transfer' && isEmpty('to')) return true;
-      if (isEmpty("total")) return true;
       return false;
-    }
+    };
 
     $scope.submit = function() {
       event.preventDefault();
@@ -51,7 +51,8 @@ angular.module('transaction', [])
         function (resp) {
           $scope.transactions = resp.data;
           toast('SUCCESSFULLY ADDED!');
-          location.reload();
+          $mdDialog.cancel();
+          $rootScope.$broadcast('updateTransactions');
         },
         function (resp) {
           toast('FAILED TO SUBMIT!');
