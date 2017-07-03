@@ -1,67 +1,54 @@
-<form ng-submit="submit()" ng-controller="TransactionAddCtrl" id="addTransaction">
-  <div class="input-field">
-    <input type="radio" id="expense" class="with-gap" ng-model="transaction.type" value="Expense" checked ng-click="enableExpense();">
-    <label for="expense">Expense</label>
-  </div>
-  <div class="input-field">
-    <input type="radio" id="transfer" class="with-gap" ng-model="transaction.type" value="Transfer" ng-click="enableTransfer();">
-    <label for="transfer">Transfer</label>
-  </div>
-  &nbsp
-  <div class="divider"></div>
+<form ng-submit="submit()" id="addTransaction">
+  <md-radio-group id="type">
+    <md-radio-button ng-model="transaction.type" value="expense" ng-click="selectType('expense');" class="md-primary" >
+      Expense
+    </md-radio-button>
+    <md-radio-button ng-model="transaction.type" value="transfer" ng-click="selectType('transfer');">
+      Transfer
+    </md-radio-button>
+  </md-radio-group>
 
-  <div class="row">&nbsp</div>
-
-  <div class="row">
-    <div class="input-field col s6 m6 l6">
-      <select id="from" ng-model="transaction.from">
-        <option value="" selected></option>
-        <option value="Xuebin">Xuebin</option>
-        <option value="Yunhe">Yunhe</option>
-      </select>
-      <label>From</label>
+  <div layout="column">
+    <div flex="50">
+      <md-select id="from" ng-model="transaction.from" placeholder="From" class="md-no-underline">
+        <md-option value="xuebin">Xuebin</md-option>
+        <md-option value="yunhe">Yunhe</md-option>
+      </md-select>
     </div>
 
-    <div class="input-field col s6 m6 l6">
-      <select id="to" ng-model="transaction.to" disabled>
-        <option value="" selected></option>
-        <option value="Xuebin">Xuebin</option>
-        <option value="Yunhe">Yunhe</option>
-      </select>
-      <label>To</label>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="input-field col s6 m6 l6">
-      <select id="category" ng-model="transaction.category">
-        <option value="" selected></option>
-        <option value="Rent">Rent</option>
-        <option value="Internet">Internet</option>
-        <option value="Electric">Electric</option>
-        <option value="Restaurant">Restaurant</option>
-        <option value="Other">Other</option>
-      </select>
-      <label>Category</label>
+    <div flex="50">
+      <md-select id="to" ng-model="transaction.to" ng-attr-disabled="disabled('to')" placeholder="To" class="md-no-underline">
+        <md-option value="xuebin">Xuebin</md-option>
+        <md-option value="yunhe">Yunhe</md-option>
+      </md-select>
     </div>
 
-    <div class="input-field col s6 m6 l6">
-      <input type="date" id="date" class="datepicker" ng-model="transaction.date">
-      <label>Date</label>
+    <div flex="50">
+      <md-select id="category" ng-model="transaction.category" placeholder="Category" class="md-no-underline">
+        <md-option value="Rent">Rent</md-option>
+        <md-option value="Internet">Internet</md-option>
+        <md-option value="Electric">Electric</md-option>
+        <md-option value="Restaurant">Restaurant</md-option>
+        <md-option value="Other">Other</md-option>
+      </md-select>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="input-field col s12 m6 l6">
-      <input id="total" type="number" step="0.01" class="validate" ng-model="transaction.total">
-      <label for="total" data-error="Input is not a number!">Total</label>
+    <div flex="50">
+      <md-datepicker id="date" ng-model="transaction.date" md-placeholder="Enter Date" md-open-on-focus="true"></md-datepicker>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="input-field col s12 m6 l6">
-      <input type="text" id="memo" ng-model="transaction.memo">
-      <label for="memo">Memo</label>
+    <div flex="50">
+      <md-input-container id="total" class="md-block">
+        <label>Total</label>
+        <input required type="number" step="0.01" name="total" ng-model="transaction.total" min="0">
+      </md-input-container>
+    </div>
+
+    <div flex="50">
+      <md-input-container id="memo" class="md-block">
+        <label>Memo</label>
+        <input name="memo" ng-model="transaction.memo">
+      </md-input-container>
     </div>
   </div>
 </form>

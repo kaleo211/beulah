@@ -3,7 +3,7 @@ var app = angular.module('app', [
   'ngRoute',
   'ngMaterial',
   'ngMessages',
-  'transaction',
+   'transaction',
   'summary'
 ]);
 
@@ -13,7 +13,7 @@ app.controller('AppCtrl', function($scope, $mdDialog) {
 
   $scope.show = function(ev) {
     $mdDialog.show({
-      contentElement: '#myDialog',
+      contentElement: '#newTransactionDialog',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,

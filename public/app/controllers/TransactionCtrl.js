@@ -14,18 +14,9 @@ angular.module('transaction', [])
 
     $scope.transaction = {};
 
-    $scope.enableExpense = function () {
-      console.log("i am here");
-      $("#to").attr("disabled", "");
-      $("#category").removeAttr("disabled");
-      $('select').material_select('update');
-    };
-
-    $scope.enableTransfer = function () {
-      console.log("i am here3");
-      $("#category").attr("disabled", "");
-      $("#to").removeAttr("disabled");
-      $('select').material_select('update');
+    $scope.disabled = function(id) {
+      console.log('i am here', id);
+      return id=='to'&&$scope.transaction.type=='transfer' || id=='catelog'&&$scope.transaction.type=='expense'
     };
 
     var isEmpty = function (field) {
