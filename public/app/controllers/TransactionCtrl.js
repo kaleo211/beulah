@@ -11,8 +11,9 @@ angular.module('transaction', [])
     init();
   })
   .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast, $mdDialog, $rootScope) {
-    $scope.transaction = {};
-    $scope.transaction.date = new Date();
+    $scope.transaction = {
+      date: new Date()
+    };
 
     $scope.disabled = function(id) {
       return id=='to'&&$scope.transaction.type=='transfer' || id=='catelog'&&$scope.transaction.type=='expense';

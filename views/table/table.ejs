@@ -18,7 +18,7 @@
             <td md-cell>{{ t.to }}</td>
             <td md-cell>{{ t.type }}</td>
             <td md-cell>{{ t.category }}</td>
-            <td md-cell>{{ t.date.toISOString().slice(0,10) }}</td>
+            <td md-cell>{{ t.date.slice(5,10).replace('-', '/') }}</td>
             <td md-cell>{{ t.memo }}</td>
             <td md-cell>{{ t.total | number: 2 }}</td>
           </tr>
