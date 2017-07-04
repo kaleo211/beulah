@@ -1,8 +1,8 @@
 var Sequelize = require('sequelize');
 var models = require('../models');
 
-var query = `SELECT E.from, E.to, SUM(total) AS total 
-                 FROM (SELECT * FROM transactions T WHERE T.type=?) E 
+var query = `SELECT E.from, E.to, SUM(total) AS total
+                 FROM (SELECT * FROM transactions T WHERE T.type=?) E
                  GROUP BY E.from, E.to;`;
 
 var summary = {};
@@ -23,15 +23,22 @@ summary.get = function () {
 
     var debt = {};
     expenses.forEach(function (expense) {
-      debt[expense.from] = expense.total;
+      if (!debt[expense.from]) {
+        debt[expense.from] = 0;
+      }
+      debt[expense.from] += expense.total;
     });
 
     transfers.forEach(function (transfer) {
-      if (!debt[transfer.from]) debt[transfer.from] = 0;
-      debt[transfer.from] = debt[transfer.from] + transfer.total;
+      if (!debt[transfer.from]) {
+        debt[transfer.from] = 0;
+      }
+      debt[transfer.from] += transfer.total;
 
-      if (!debt[transfer.to]) debt[transfer.to] = 0;
-      debt[transfer.to] = debt[transfer.to] - transfer.total;
+      if (!debt[transfer.to]) {
+        debt[transfer.to] = 0;
+      }
+      debt[transfer.to] -= transfer.total;
     });
 
     var sum = 0, length=0;
@@ -41,6 +48,7 @@ summary.get = function () {
         length++;
       }
     }
+
     var average = sum/length;
     var owns = [];
     for (var key in debt) {
