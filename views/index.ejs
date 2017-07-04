@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/scripts/material-design-icons/iconfont/material-icons.css">
@@ -18,58 +18,59 @@
   <script src="/app/controllers/SummaryCtrl.js"></script>
 </head>
 
-<body ng-controller="AppCtrl">
-  <md-button ng-click="show($event)" class="md-fab md-primary md-fab-bottom-right"  aria-label="Add New Transaction" >
-    <md-icon>add</md-icon>
-  </md-button>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <md-truncate>Beulah</md-truncate>
-    </div>
-  </md-toolbar>
-
-  <md-content>
-    <div id="all">
-      <div layout="row">
-        <div flex>
-          <% include summary/summary.ejs %>
+<body ng-app="app" layout="row">
+  <div ng-controller="AppCtrl" layout="column" layout-fill>
+    <md-button ng-click="show($event)" class="md-fab md-primary md-fab-bottom-right"
+               aria-label="Add New Transaction">
+      <md-icon>add</md-icon>
+    </md-button>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-truncate>Beulah</md-truncate>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <div id="all">
+        <div layout="row">
+          <div flex>
+            <% include summary/summary.ejs %>
+          </div>
+        </div>
+        <div layout="row">
+          <div flex="100">
+            <% include table/table.ejs %>
+          </div>
         </div>
       </div>
+    </md-content>
 
-      <div layout="row">
-        <div flex="100">
-          <% include table/table.ejs %>
-        </div>
-      </div>
-    </div>
-  </md-content>
+    <div ng-controller="TransactionAddCtrl" style="visibility: hidden">
+      <div class="md-dialog-container" id="newTransactionDialog">
+        <md-dialog aria-label="New Transaction" style="max-width:40em; max-height:40em; width:40em; height:40em;">
+          <form ng-cloak>
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+                <h2>New Transaction</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                  <md-icon aria-label="Close dialog">close</md-icon>
+                </md-button>
+              </div>
+            </md-toolbar>
 
-  <div ng-controller="TransactionAddCtrl" style="visibility: hidden">
-    <div class="md-dialog-container" id="newTransactionDialog">
-      <md-dialog aria-label="New Transaction" style="max-width:40em; max-height:40em; width:40em; height:40em;">
-        <form ng-cloak>
-          <md-toolbar>
-            <div class="md-toolbar-tools">
-              <h2>New Transaction</h2>
+            <md-dialog-content>
+              <div class="md-dialog-content">
+                <% include form/add-transaction.ejs %>
+              </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
               <span flex></span>
-              <md-button class="md-icon-button" ng-click="cancel()">
-                <md-icon aria-label="Close dialog">close</md-icon>
-              </md-button>
-            </div>
-          </md-toolbar>
-
-          <md-dialog-content>
-            <div class="md-dialog-content">
-              <% include form/add-transaction.ejs %>
-            </div>
-          </md-dialog-content>
-
-          <md-dialog-actions layout="row">
-            <span flex></span>
-            <md-button ng-click="submit()">confirm</md-button>
-          </md-dialog-actions>
-        </form>
-      </md-dialog>
+              <md-button ng-click="submit()">confirm</md-button>
+            </md-dialog-actions>
+          </form>
+        </md-dialog>
+      </div>
     </div>
   </div>
 </body>
