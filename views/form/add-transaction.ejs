@@ -1,11 +1,18 @@
 <form ng-submit="submit()" id="addTransaction">
   <md-radio-group id="type" ng-model="transaction.type">
-    <md-radio-button value="expense" ng-click="selectType('expense');" class="md-primary" >
-      Expense
-    </md-radio-button>
-    <md-radio-button value="transfer" ng-click="selectType('transfer');">
-      Transfer
-    </md-radio-button>
+    <div>
+      <md-radio-button value="expense" ng-click="selectType('expense');"
+                       class="md-primary" aria-label="Expense"
+                       style="height: 2.5em;">
+        <md-icon style="font-size: 2.5em;">domain</md-icon>
+      </md-radio-button>
+    </div>
+    <div>
+      <md-radio-button value="transfer" ng-click="selectType('transfer');"
+                       aria-label="Transfer" style="height: 3em;">
+        <md-icon style="font-size: 3em;">swap_horiz</md-icon>
+      </md-radio-button>
+    </div>
   </md-radio-group>
 
   <div layout="row">
