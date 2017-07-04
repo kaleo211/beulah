@@ -12,11 +12,8 @@ angular.module('transaction', [])
   })
   .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast, $mdDialog, $rootScope) {
     $scope.transaction = {
-      date: new Date()
-    };
-
-    $scope.disabled = function(id) {
-      return id=='to'&&$scope.transaction.type=='transfer' || id=='catelog'&&$scope.transaction.type=='expense';
+      date: new Date(),
+      type: 'expense'
     };
 
     var toast = function(msg) {
@@ -35,7 +32,7 @@ angular.module('transaction', [])
       return false;
     };
 
-    var checkEmtpy = function () {
+    var validateFields = function () {
       if (isEmpty("from") || isEmpty("total") || isEmpty("date")) return true;
       if ($scope.transaction.type=='expense' && isEmpty('category')) return true;
       if ($scope.transaction.type=='transfer' && isEmpty('to')) return true;
@@ -44,7 +41,7 @@ angular.module('transaction', [])
 
     $scope.submit = function() {
       event.preventDefault();
-      if (checkEmtpy()) {
+      if (validateFields()) {
         return;
       }
 

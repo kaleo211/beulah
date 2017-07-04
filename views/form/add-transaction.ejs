@@ -2,8 +2,7 @@
   <md-radio-group id="type" ng-model="transaction.type">
     <div>
       <md-radio-button value="expense" ng-click="selectType('expense');"
-                       class="md-primary" aria-label="Expense"
-                       style="height: 2.5em;">
+                       class="md-primary" aria-label="Expense" style="height: 2.5em;">
         <md-icon style="font-size: 2.5em;">domain</md-icon>
       </md-radio-button>
     </div>
@@ -24,7 +23,8 @@
     </div>
     <div flex></div>
     <div flex="45" layout="column">
-      <md-select id="to" ng-model="transaction.to" ng-attr-disabled="disabled('to')" placeholder="To" class="md-no-underline">
+      <md-select id="to" ng-model="transaction.to" ng-disabled="transaction.type=='expense'"
+                 placeholder="To" class="md-no-underline">
         <md-option value="xuebin">Xuebin</md-option>
         <md-option value="yunhe">Yunhe</md-option>
       </md-select>
@@ -33,7 +33,8 @@
 
   <div layout="row">
     <div flex="45" layout="column">
-      <md-select id="category" ng-model="transaction.category" placeholder="Category" class="md-no-underline">
+      <md-select id="category" ng-model="transaction.category" ng-disabled="transaction.type=='transfer'"
+                 placeholder="Category" class="md-no-underline">
         <md-option value="Rent">Rent</md-option>
         <md-option value="Internet">Internet</md-option>
         <md-option value="Electric">Electric</md-option>
@@ -43,7 +44,8 @@
     </div>
     <div flex></div>
     <div flex="45" layout="column">
-      <md-datepicker id="date" ng-model="transaction.date" md-placeholder="Enter Payment Date" md-open-on-focus="true"></md-datepicker>
+      <md-datepicker id="date" ng-model="transaction.date" md-placeholder="Enter Payment Date"
+                     md-open-on-focus="true"></md-datepicker>
     </div>
   </div>
 
