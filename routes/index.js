@@ -16,6 +16,12 @@ router.get('/summary', function(req, res){
   });
 });
 
+router.get('/members', function(req, res) {
+  controllers.member.get().then(function(members) {
+    res.status(200).send(JSON.stringify(members));
+  });
+});
+
 router.get('/transactions', function(req, res) {
   controllers.transaction.get().then(function(transactions) {
     res.status(200).send(JSON.stringify(transactions));

@@ -11,6 +11,11 @@ angular.module('transaction', [])
     init();
   })
   .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast, $mdDialog, $rootScope) {
+    $http.get('/members').then(function (resp) {
+      $scope.members = resp.data;
+      console.log('members', $scope.members);
+    });
+
     $scope.transaction = {
       date: new Date(),
       type: 'expense'

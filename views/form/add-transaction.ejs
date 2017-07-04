@@ -16,17 +16,19 @@
 
   <div layout="row">
     <div flex="45" layout="column">
-      <md-select id="from" ng-model="transaction.from" placeholder="From" class="md-no-underline">
-        <md-option value="xuebin">Xuebin</md-option>
-        <md-option value="yunhe">Yunhe</md-option>
+      <md-select id="from" ng-model="transaction.from" placeholder="From">
+        <md-option ng-repeat="member in members" ng-value="member.first" >
+          {{ member.first.toUpperCase() }}
+        </md-option>
       </md-select>
     </div>
     <div flex></div>
     <div flex="45" layout="column">
       <md-select id="to" ng-model="transaction.to" ng-disabled="transaction.type=='expense'"
-                 placeholder="To" class="md-no-underline">
-        <md-option value="xuebin">Xuebin</md-option>
-        <md-option value="yunhe">Yunhe</md-option>
+                 placeholder="To">
+        <md-option ng-repeat="member in members" ng-value="member.first" >
+          {{ member.first.toUpperCase() }}
+        </md-option>
       </md-select>
     </div>
   </div>
@@ -34,7 +36,7 @@
   <div layout="row">
     <div flex="45" layout="column">
       <md-select id="category" ng-model="transaction.category" ng-disabled="transaction.type=='transfer'"
-                 placeholder="Category" class="md-no-underline">
+                 placeholder="Category">
         <md-option value="Rent">Rent</md-option>
         <md-option value="Internet">Internet</md-option>
         <md-option value="Electric">Electric</md-option>
