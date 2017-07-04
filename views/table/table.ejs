@@ -3,9 +3,9 @@
     <table md-table>
       <thead md-head>
         <tr md-row>
+          <th md-column>TYPE</th>
           <th md-column>FROM</th>
           <th md-column>TO</th>
-          <th md-column>TYPE</th>
           <th md-column>CATEGORY</th>
           <th md-column>DATE</th>
           <th md-column>MEMO</th>
@@ -14,9 +14,18 @@
       </thead>
       <tbody md-body>
           <tr md-row ng-repeat="t in transactions">
+            <td md-cell>
+              <div ng-if="t.type=='Expense'">
+                <md-tooltip md-direction="left">Expense</md-tooltip>
+                <md-icon>domain</md-icon>
+              </div>
+              <div ng-if="t.type=='Transfer'">
+                <md-tooltip md-direction="left">Transfer</md-tooltip>
+                <md-icon >swap_horiz</md-icon>
+              </div>
+            </td>
             <td md-cell>{{ t.from }}</td>
             <td md-cell>{{ t.to }}</td>
-            <td md-cell>{{ t.type }}</td>
             <td md-cell>{{ t.category }}</td>
             <td md-cell>{{ t.date.slice(5,10).replace('-', '/') }}</td>
             <td md-cell>{{ t.memo }}</td>
