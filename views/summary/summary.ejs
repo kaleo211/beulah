@@ -1,10 +1,8 @@
 <div ng-controller="SummaryCtrl">
-  <ul class="demo-list-icon mdl-list">
-    <li ng-repeat="debt in debts" class="mdl-list__item">
-      <span class="mdl-list__item-primary-content">
-        <i class="material-icons mdl-list__item-icon">person</i>
-        {{ debt.from }} owns {{ debt.total.toFixed(2) }} to {{ debt.to }}
-      </span>
-    </li>
-  </ul>
+  <md-list ng-cloak>
+    <md-subheader class="md-no-sticky">ALL DEBTS</md-subheader>
+    <md-list-item ng-repeat="debt in debts">
+      {{ debt.from.toUpperCase() }} owns {{ debt.total.toFixed(2) }} to {{ debt.to.toUpperCase() }}
+    </md-list-item>
+  </md-list>
 </div>
