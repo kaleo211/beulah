@@ -3,23 +3,22 @@
     <table md-table>
       <thead md-head>
         <tr md-row>
-          <th md-column>TYPE</th>
-          <th md-column>FROM</th>
-          <th md-column>TO</th>
-          <th md-column>CATEGORY</th>
-          <th md-column>DATE</th>
-          <th md-column>MEMO</th>
-          <th md-column md-numeric>TOTAL</th>
+          <th md-column ng-repeat="c in columns">
+            <a href="" ng-click="search(c)">{{c.toUpperCase()}}</a>
+          </th>
+          <th md-column md-numeric>
+            <a href="" ng-click="search('total')">TOTAL</a>
+          </th>
         </tr>
       </thead>
       <tbody md-body>
           <tr md-row ng-repeat="t in transactions">
             <td md-cell>
-              <div ng-if="t.type=='Expense'">
+              <div ng-if="t.type=='expense'">
                 <md-tooltip md-direction="left">Expense</md-tooltip>
                 <md-icon>domain</md-icon>
               </div>
-              <div ng-if="t.type=='Transfer'">
+              <div ng-if="t.type=='transfer'">
                 <md-tooltip md-direction="left">Transfer</md-tooltip>
                 <md-icon >swap_horiz</md-icon>
               </div>

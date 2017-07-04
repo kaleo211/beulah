@@ -23,9 +23,19 @@ router.get('/members', function(req, res) {
 });
 
 router.get('/transactions', function(req, res) {
-  controllers.transaction.get().then(function(transactions) {
+  controllers.transaction
+      .search({order: {field:'date',order:'desc'}})
+      .then(transactions => {
+        res.status(200).send(JSON.stringify(transactions));
+      });
+});
+
+router.post('/transactions/search', function(req, res) {
+  var body = req.body;
+  console.log('body', body);
+  controllers.transaction.search(body).then(transactions => {
     res.status(200).send(JSON.stringify(transactions));
-  });
+  })
 });
 
 router.post('/transactions', function (req, res) {

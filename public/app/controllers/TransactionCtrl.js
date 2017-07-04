@@ -8,6 +8,18 @@ angular.module('transaction', [])
     $scope.$on("updateTransactions",function(){
       init();
     });
+
+
+    $scope.search = function(field) {
+      var search = {order: {field:field,order:'desc'}};
+      $http.post('/transactions/search', search).then(
+        function (resp) {
+          $scope.transactions = resp.data;
+        }
+      );
+    };
+
+    $scope.columns = ['type', 'from', 'to', 'category', 'date', 'memo'];
     init();
   })
   .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast, $mdDialog, $rootScope) {
