@@ -16,44 +16,70 @@ summary.get = function () {
     models.sequelize.query(query, {
       replacements: ["transfer"],
       type: Sequelize.QueryTypes.SELECT
-    })
-  ]).then(([exps, trans]) => {
+    }),
+    models.member.findAll()
+  ]).then(([exps, trans, members]) => {
     expenses = JSON.parse(JSON.stringify(exps));
     transfers = JSON.parse(JSON.stringify(trans));
+    members = members.map(function(m) {return m.get({ plain: true })});
 
     var debt = {};
+    members.forEach(function(member) {
+      debt[member.first] = 0;
+    });
+
     expenses.forEach(function (expense) {
-      if (!debt[expense.from]) {
-        debt[expense.from] = 0;
-      }
       debt[expense.from] += expense.total;
     });
 
     transfers.forEach(function (transfer) {
-      if (!debt[transfer.from]) {
-        debt[transfer.from] = 0;
-      }
       debt[transfer.from] += transfer.total;
-
-      if (!debt[transfer.to]) {
-        debt[transfer.to] = 0;
-      }
       debt[transfer.to] -= transfer.total;
     });
 
-    var sum = 0, length=0;
+    var sum = 0;
     for (var key in debt) {
-      if (debt[key]) {
-        sum += debt[key];
-        length++;
+      sum += debt[key];
+    }
+    var average = sum/members.length;
+
+    var lenders = [], lendees = [];
+    for (var key in debt) {
+      if (debt[key] > average) {
+        lenders.push({k:key,v:debt[key]-average});
+      } else if (debt[key] < average) {
+        lendees.push({k:key,v:average-debt[key]});
       }
     }
 
-    var average = sum/length;
+    var descend = function(a, b) {
+      return (a.v > b.v) ? 1 : ((b.v > a.v) ? -1 : 0);
+    }
+    lenders.sort(descend);
+    lendees.sort(descend);
+
     var owns = [];
-    for (var key in debt) {
-      owns.push({from: key, total: average - debt[key]});
-    };
+    while (lenders.length>0) {
+      if (lendees.length==0) {
+        console.log('error: the debt is not even.');
+        break;
+      }
+
+      var from = lendees[0].k, to = lenders[0].k, total;
+      if (lenders[0].v > lendees[0].v) {
+        total = lendees[0].v;
+        lenders[0].v -= lendees[0].v;
+        lendees.splice(0,1);
+        lenders.sort(descend);
+      } else {
+        total = lenders[0].v;
+        lendees[0].v -= lenders[0].v;
+        lenders.splice(0,1);
+        lendees.sort(descend);
+      }
+      owns.push({from: from, to: to, total: total});
+    }
+
     return owns;
   });
 };
