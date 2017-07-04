@@ -20,6 +20,7 @@
     "ejs": "^2.5.6",
     "express": "^4.15.0",
     "fs": "0.0.1-security",
+    "material-design-icons": "^3.0.1",
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "sequelize": "^3.30.2"
