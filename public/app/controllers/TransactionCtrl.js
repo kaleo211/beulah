@@ -9,9 +9,15 @@ angular.module('transaction', [])
       init();
     });
 
-
+    $scope.currentOrder = 'desc';
+    $scope.currentField = 'date';
     $scope.search = function(field) {
-      var search = {order: {field:field,order:'desc'}};
+      if ($scope.currentField==field) {
+        $scope.currentOrder = $scope.currentOrder=='desc' ? 'asc' : 'desc';
+      }
+      $scope.currentField = field;
+
+      var search = {order: {field:field,order:$scope.currentOrder}};
       $http.post('/transactions/search', search).then(
         function (resp) {
           $scope.transactions = resp.data;
@@ -22,6 +28,7 @@ angular.module('transaction', [])
     $scope.columns = ['type', 'from', 'to', 'category', 'date', 'memo'];
     init();
   })
+
   .controller('TransactionAddCtrl', function TransactionAddCtrl($scope, $http, $mdToast, $mdDialog, $rootScope) {
     $http.get('/members').then(function (resp) {
       $scope.members = resp.data;
