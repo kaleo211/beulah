@@ -47,7 +47,7 @@
 
     <div ng-controller="TransactionAddCtrl" style="visibility: hidden">
       <div class="md-dialog-container" id="newTransactionDialog">
-        <md-dialog aria-label="New Transaction" style="max-width:40em; max-height:40em; width:40em; height:40em;">
+        <md-dialog aria-label="New Transaction" style="width:40em; height:40em;">
           <form ng-cloak>
             <md-toolbar>
               <div class="md-toolbar-tools">
@@ -67,7 +67,8 @@
 
             <md-dialog-actions layout="row">
               <span flex></span>
-              <md-button ng-click="submit()">confirm</md-button>
+              <md-button ng-click="submit()" class="md-primary md-raised">confirm</md-button>
+              <span flex="5"></span>
             </md-dialog-actions>
           </form>
         </md-dialog>
