@@ -34,10 +34,13 @@ angular.module('transaction', [])
       $scope.members = resp.data;
     });
 
-    $scope.transaction = {
-      date: new Date(),
-      type: 'expense'
+    $scope.init = function() {
+      $scope.transaction = {
+        date: new Date(),
+        type: 'expense'
+      };
     };
+    $scope.init();
 
     var toast = function(msg) {
       $mdToast.show({
@@ -79,7 +82,6 @@ angular.module('transaction', [])
           toast('FAILED TO SUBMIT!');
         }
       );
-
-      $scope.transaction = {};
+      $scope.init();
     };
   });
