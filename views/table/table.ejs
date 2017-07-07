@@ -12,24 +12,24 @@
         </tr>
       </thead>
       <tbody md-body>
-          <tr md-row ng-repeat="t in transactions">
-            <td md-cell>
-              <div ng-if="t.type=='expense'">
-                <md-tooltip md-direction="left">Expense</md-tooltip>
-                <md-icon>domain</md-icon>
-              </div>
-              <div ng-if="t.type=='transfer'">
-                <md-tooltip md-direction="left">Transfer</md-tooltip>
-                <md-icon >swap_horiz</md-icon>
-              </div>
-            </td>
-            <td md-cell>{{ t.from }}</td>
-            <td md-cell>{{ t.to }}</td>
-            <td md-cell>{{ t.category }}</td>
-            <td md-cell>{{ t.date.slice(5,10).replace('-', '/') }}</td>
-            <td md-cell>{{ t.memo }}</td>
-            <td md-cell>{{ t.total | number: 2 }}</td>
-          </tr>
+        <tr md-row ng-repeat="t in transactions">
+          <td md-cell>
+            <div ng-if="t.type=='expense'">
+              <md-tooltip md-direction="left">Expense</md-tooltip>
+              <md-icon>domain</md-icon>
+            </div>
+            <div ng-if="t.type=='transfer'">
+              <md-tooltip md-direction="left">Transfer</md-tooltip>
+              <md-icon>swap_horiz</md-icon>
+            </div>
+          </td>
+          <td md-cell>{{ cap(t.from) }}</td>
+          <td md-cell>{{ cap(t.to) }}</td>
+          <td md-cell>{{ cap(t.category) }}</td>
+          <td md-cell>{{ t.date.slice(5,10).replace('-', '/') }}</td>
+          <td md-cell>{{ t.memo }}</td>
+          <td md-cell>{{ t.total | number: 2 }}</td>
+        </tr>
       </tbody>
     </table>
   </md-table-container>

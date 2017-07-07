@@ -1,23 +1,27 @@
 angular.module('transaction', [])
   .controller('TransactionCtrl', function TransactionCtrl($scope, $http) {
-    var init = function() {
+    var init = function () {
       $http.get('/transactions').then(function (resp) {
         $scope.transactions = resp.data;
       });
     };
-    $scope.$on("updateTransactions",function(){
+    $scope.$on("updateTransactions", function () {
       init();
     });
 
+    $scope.cap = function (s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    };
+
     $scope.currentOrder = 'desc';
     $scope.currentField = 'date';
-    $scope.search = function(field) {
-      if ($scope.currentField==field) {
-        $scope.currentOrder = $scope.currentOrder=='desc' ? 'asc' : 'desc';
+    $scope.search = function (field) {
+      if ($scope.currentField == field) {
+        $scope.currentOrder = $scope.currentOrder == 'desc' ? 'asc' : 'desc';
       }
       $scope.currentField = field;
 
-      var search = {order: {field:field,order:$scope.currentOrder}};
+      var search = { order: { field: field, order: $scope.currentOrder } };
       $http.post('/transactions/search', search).then(
         function (resp) {
           $scope.transactions = resp.data;
@@ -34,7 +38,7 @@ angular.module('transaction', [])
       $scope.members = resp.data;
     });
 
-    $scope.init = function() {
+    $scope.init = function () {
       $scope.transaction = {
         date: new Date(),
         type: 'expense'
@@ -42,7 +46,7 @@ angular.module('transaction', [])
     };
     $scope.init();
 
-    var toast = function(msg) {
+    var toast = function (msg) {
       $mdToast.show({
         template: '<md-toast class="md-toast">' + msg + '</md-toast>',
         hideDelay: 6000,
@@ -60,12 +64,12 @@ angular.module('transaction', [])
 
     var validateFields = function () {
       if (isEmpty("from") || isEmpty("total") || isEmpty("date")) return true;
-      if ($scope.transaction.type=='expense' && isEmpty('category')) return true;
-      if ($scope.transaction.type=='transfer' && isEmpty('to')) return true;
+      if ($scope.transaction.type == 'expense' && isEmpty('category')) return true;
+      if ($scope.transaction.type == 'transfer' && isEmpty('to')) return true;
       return false;
     };
 
-    $scope.submit = function() {
+    $scope.submit = function () {
       event.preventDefault();
       if (validateFields()) {
         return;
