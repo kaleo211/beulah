@@ -4,10 +4,10 @@
       <thead md-head>
         <tr md-row>
           <th md-column ng-repeat="c in columns">
-            <a href="" ng-click="search(c)">{{c.toUpperCase()}}</a>
+            <a href="" ng-click="reorder(c)">{{c.toUpperCase()}}</a>
           </th>
           <th md-column md-numeric>
-            <a href="" ng-click="search('total')">TOTAL</a>
+            <a href="" ng-click="reorder('total')">TOTAL</a>
           </th>
         </tr>
       </thead>
@@ -16,16 +16,22 @@
           <td md-cell>
             <div ng-if="t.type=='expense'">
               <md-tooltip md-direction="left">Expense</md-tooltip>
-              <md-icon>domain</md-icon>
+              <a href="" ng-click="focus('type', t.type)"><md-icon>domain</md-icon></a>
             </div>
             <div ng-if="t.type=='transfer'">
               <md-tooltip md-direction="left">Transfer</md-tooltip>
-              <md-icon>swap_horiz</md-icon>
+              <a href="" ng-click="focus('type', t.type)"><md-icon>swap_horiz</md-icon></a>
             </div>
           </td>
-          <td md-cell>{{ cap(t.from) }}</td>
-          <td md-cell>{{ cap(t.to) }}</td>
-          <td md-cell>{{ cap(t.category) }}</td>
+          <td md-cell>
+            <a href="" ng-click="focus('from', t.from)">{{ cap(t.from) }}</a>
+          </td>
+          <td md-cell>
+            <a href="" ng-click="focus('to', t.to)">{{ cap(t.to) }}</a>
+          </td>
+          <td md-cell>
+            <a href="" ng-click="focus('category', t.category)">{{ cap(t.category) }}</a>
+          </td>
           <td md-cell>{{ t.date.slice(5,10).replace('-', '/') }}</td>
           <td md-cell>{{ t.memo }}</td>
           <td md-cell>{{ t.total | number: 2 }}</td>

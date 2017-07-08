@@ -13,21 +13,37 @@ angular.module('transaction', [])
       return s.charAt(0).toUpperCase() + s.slice(1);
     };
 
-    $scope.currentOrder = 'desc';
-    $scope.currentField = 'date';
-    $scope.search = function (field) {
-      if ($scope.currentField == field) {
-        $scope.currentOrder = $scope.currentOrder == 'desc' ? 'asc' : 'desc';
+    var query = {
+      order: {
+        field: 'date',
+        order: 'desc'
       }
-      $scope.currentField = field;
+    };
 
-      var search = { order: { field: field, order: $scope.currentOrder } };
-      $http.post('/transactions/search', search).then(
+    var search = function () {
+      $http.post('/transactions/search', query).then(
         function (resp) {
           $scope.transactions = resp.data;
         }
       );
     };
+
+    $scope.reorder = function (field) {
+      console.log(field, "field");
+      if (query.order.field == field) {
+        query.order.order = query.order.order == 'desc' ? 'asc' : 'desc';
+      }
+      query.order.field = field;
+      search();
+    }
+
+    $scope.focus = function (field, value) {
+      query.focus = {
+        field: field,
+        value: value
+      };
+      search();
+    }
 
     $scope.columns = ['type', 'from', 'to', 'category', 'date', 'memo'];
     init();

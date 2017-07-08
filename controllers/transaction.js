@@ -7,6 +7,11 @@ var search = function (option) {
   if (option.order) {
     query['order'] = [[option.order.field, option.order.order]];
   }
+  if (option.focus) {
+    var eq = {};
+    eq[option.focus.field] = option.focus.value;
+    query['where'] = eq;
+  }
 
   return models.transaction
     .findAll(query)
