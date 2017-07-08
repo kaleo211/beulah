@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/scripts/material-design-icons/iconfont/material-icons.css">
@@ -21,13 +22,14 @@
 
 <body ng-app="app" layout="row">
   <div ng-controller="AppCtrl" layout="column" layout-fill>
-    <md-button ng-click="show($event)" class="md-fab md-primary md-fab-bottom-right"
-               aria-label="Add New Transaction">
+    <md-button ng-click="show($event)" class="md-fab md-primary md-fab-bottom-right" aria-label="Add New Transaction">
       <md-icon>add</md-icon>
     </md-button>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <md-truncate>Beulah</md-truncate>
+        <md-truncate>
+          <a href="" ng-click="reload()">Beulah</a>
+        </md-truncate>
       </div>
     </md-toolbar>
     <md-content>
@@ -76,4 +78,5 @@
     </div>
   </div>
 </body>
+
 </html>

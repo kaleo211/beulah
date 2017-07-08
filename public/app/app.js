@@ -7,11 +7,11 @@ var app = angular.module('app', [
   'summary'
 ]);
 
-app.controller('AppCtrl', function($scope, $mdDialog) {
+app.controller('AppCtrl', function ($scope, $mdDialog, $window) {
   angular.element(document).ready(function () {
   });
 
-  $scope.show = function(ev) {
+  $scope.show = function (ev) {
     $mdDialog.show({
       contentElement: '#newTransactionDialog',
       parent: angular.element(document.body),
@@ -21,8 +21,12 @@ app.controller('AppCtrl', function($scope, $mdDialog) {
     });
   };
 
-  $scope.cancel = function() {
+  $scope.cancel = function () {
     $mdDialog.cancel();
+  };
+
+  $scope.reload = function () {
+    $window.location.reload();
   };
 });
 
@@ -32,5 +36,5 @@ app.config(function ($routeProvider, $locationProvider) {
     requireBase: false
   });
 
-  $routeProvider.otherwise({redirectTo: '/'});
+  $routeProvider.otherwise({ redirectTo: '/' });
 });
