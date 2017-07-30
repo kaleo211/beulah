@@ -22,9 +22,27 @@
 
 <body ng-app="app" layout="row">
   <div ng-controller="AppCtrl" layout="column" layout-fill>
-    <md-button ng-click="show($event)" class="md-fab md-primary md-fab-bottom-right" aria-label="Add New Transaction">
+    <md-fab-speed-dial class="md-fab-bottom-right" md-open="showDial" md-direction="up" ng-class="'md-scale'">
+      {{showDial}}
+      <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-primary">
+          <md-icon>add</md-icon>
+        </md-button>
+      </md-fab-trigger>
+      <md-fab-actions>
+        <md-button aria-label="expense" class="md-fab md-raised md-mini md-primary">
+          <md-icon>domain</md-icon>
+        </md-button>
+        <md-button aria-label="transfer" class="md-fab md-raised md-mini md-primary">
+          <md-icon>swap_horiz</md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-fab-speed-dial>
+
+    <!-- <md-button ng-click="show($event)" class="md-fab md-primary md-fab-bottom-right" aria-label="Add New Transaction">
       <md-icon>add</md-icon>
-    </md-button>
+    </md-button> -->
+
     <md-toolbar>
       <div class="md-toolbar-tools">
         <md-truncate>
