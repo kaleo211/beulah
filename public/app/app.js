@@ -11,23 +11,6 @@ app.controller('AppCtrl', function ($scope, $mdDialog, $window) {
   angular.element(document).ready(function () {
   });
 
-  $scope.showAddTransactionDialog = function (ev, type) {
-    var dialogElement;
-    if (type == 'expense') {
-      dialogElement = '#newExpenseDialog';
-    } else if (type == 'transfer') {
-      dialogElement = '#newTransferDialog';
-    }
-
-    $mdDialog.show({
-      contentElement: dialogElement,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      fullscreen: true
-    });
-  };
-
   $scope.cancel = function () {
     $mdDialog.cancel();
   };

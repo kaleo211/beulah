@@ -62,6 +62,24 @@ angular.module('transaction', [])
     };
     $scope.init();
 
+    $scope.showAddTransactionDialog = function (ev, type) {
+      $scope.transaction.type = type;
+      var dialogElement;
+      if (type == 'expense') {
+        dialogElement = '#newExpenseDialog';
+      } else if (type == 'transfer') {
+        dialogElement = '#newTransferDialog';
+      }
+
+      $mdDialog.show({
+        contentElement: dialogElement,
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        fullscreen: true
+      });
+    };
+
     var toast = function (msg) {
       $mdToast.show({
         template: '<md-toast class="md-toast">' + msg + '</md-toast>',
