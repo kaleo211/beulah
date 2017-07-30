@@ -11,9 +11,6 @@ app.controller('AppCtrl', function ($scope, $mdDialog, $window) {
   angular.element(document).ready(function () {
   });
 
-  $scope.showDial = true;
-  console.log("show dial", $scope.showDial);
-
   $scope.showAddTransactionDialog = function (ev, type) {
     var dialogElement;
     if (type == 'expense') {

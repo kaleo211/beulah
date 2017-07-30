@@ -22,8 +22,7 @@
 
 <body ng-app="app" layout="row">
   <div ng-controller="AppCtrl" layout="column" layout-fill>
-    <md-fab-speed-dial class="md-fab-bottom-right" md-open="showDial" md-direction="up" ng-class="'md-scale'">
-      {{showDial}}
+    <md-fab-speed-dial class="md-fab-bottom-right" md-open="showSpeedDial" md-direction="up" ng-class="'md-scale'">
       <md-fab-trigger>
         <md-button aria-label="menu" class="md-fab md-primary">
           <md-icon>add</md-icon>
@@ -62,7 +61,7 @@
 
     <div ng-controller="TransactionAddCtrl" style="visibility: hidden">
       <div class="md-dialog-container" id="newExpenseDialog">
-        <md-dialog aria-label="New Expense" style="width:40em; height:40em;">
+        <md-dialog aria-label="New Expense" style="width:40em; height:30em;">
           <form ng-cloak>
             <md-toolbar>
               <div class="md-toolbar-tools">
@@ -87,7 +86,7 @@
         </md-dialog>
       </div>
       <div class="md-dialog-container" id="newTransferDialog">
-        <md-dialog aria-label="New Transfer" style="width:40em; height:40em;">
+        <md-dialog aria-label="New Transfer" style="width:40em; height:30em;">
           <form ng-cloak>
             <md-toolbar>
               <div class="md-toolbar-tools">
