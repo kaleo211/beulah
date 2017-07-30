@@ -1,19 +1,4 @@
-<form ng-submit="submit()" id="addTransaction">
-  <md-radio-group id="type" ng-model="transaction.type">
-    <div>
-      <md-radio-button value="expense" ng-click="selectType('expense');"
-                       class="md-primary" aria-label="Expense" style="height: 2.5em;">
-        <md-icon style="font-size: 2.5em;">domain</md-icon>
-      </md-radio-button>
-    </div>
-    <div>
-      <md-radio-button value="transfer" ng-click="selectType('transfer');"
-                       aria-label="Transfer" style="height: 3em;">
-        <md-icon style="font-size: 3em;">swap_horiz</md-icon>
-      </md-radio-button>
-    </div>
-  </md-radio-group>
-
+<form ng-submit="submit()" id="addExpense">
   <div layout="row">
     <div flex="45" layout="column">
       <md-select id="from" ng-model="transaction.from" placeholder="From">
@@ -23,14 +8,6 @@
       </md-select>
     </div>
     <div flex></div>
-    <div flex="45" layout="column">
-      <md-select id="to" ng-model="transaction.to" ng-disabled="transaction.type=='expense'"
-                 placeholder="To">
-        <md-option ng-repeat="member in members" ng-value="member.first" >
-          {{ member.first.toUpperCase() }}
-        </md-option>
-      </md-select>
-    </div>
   </div>
 
   <div layout="row">
